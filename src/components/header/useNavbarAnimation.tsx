@@ -1,24 +1,23 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 export default function useNavbarAnimation() {
-  const [isScroll, setIsScroll] = useState(false)
-  const [scrollPosition, setScrollPosition] = useState(0)
+  const [isScroll, setIsScroll] = useState(false);
 
   useEffect(() => {
-    const updatePosition = () => {
-      if (scrollPosition !== 0) {
-        setIsScroll(true)
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > 0) {
+        setIsScroll(true);
       } else {
-        setIsScroll(false)
+        setIsScroll(false);
       }
-      setScrollPosition(window.pageYOffset)
-    }
-    window.addEventListener('scroll', updatePosition)
-    updatePosition()
-    return () => window.removeEventListener('scroll', updatePosition)
-  }, [scrollPosition])
+    };
 
-  return {
-    isScroll
-  }
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return { isScroll };
 }

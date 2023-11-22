@@ -4,13 +4,15 @@ export const Container = styled.header`
   width: 100%;
   height: 110px;
   position: fixed;
-  padding-right:110px;
-  padding-left:110px;
+  padding-right: 110px;
+  padding-left: 110px;
   top: 0;
   left: 0;
   transition: all 0.36s;
   border-bottom: 1px solid transparent;
   z-index: 9999;
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
 
   & > div {
     height: 100%;
@@ -22,8 +24,9 @@ export const Container = styled.header`
   &[data-scroll-active="true"] {
     height: 90px;
     background: rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(13.5px);
     border-bottom: 1px solid #261137;
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
   }
 `;
 
@@ -31,23 +34,22 @@ export const Logo = styled.div`
   width: 50px;
   height: 50px;
   position: relative;
-  font-size: 16px; /* Defina o tamanho padrão da logo */
+  font-size: 16px;
   transition: all 0.36s;
 
   &[data-scroll-active="true"] {
     width: 40px;
     height: 40px;
-    font-size: 12px; /* Ajuste o tamanho da fonte da logo */
+    font-size: 12px;
   }
 `;
-
 
 export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 100px;
-  font-size: 24px; /* Defina o tamanho padrão do texto */
+  gap: 20px;
+  font-size: 20px;
 
   a {
     color: #fff;
@@ -60,10 +62,9 @@ export const Nav = styled.nav`
   }
 
   &[data-scroll-active="true"] {
-    font-size: 16px; /* Aplique o tamanho maior ao elemento Nav */
+    font-size: 16px;
   }
 `;
-
 
 export const NavLink = styled.div`
   position: relative;
@@ -72,9 +73,7 @@ export const NavLink = styled.div`
   opacity: 0.8;
   transition: all 0.36s;
 
-
-    padding-left: 110px;
-
+  padding-left: 110px;
 
   &:not(:last-child)::after {
     content: "";
@@ -84,29 +83,16 @@ export const NavLink = styled.div`
     right: -75px;
     top: 50%;
     transform: translateY(-50%);
-    
+
     background: #898989;
   }
 
   & a {
-    color:white;
+    color: white;
     text-decoration: none;
   }
 
   &:hover {
     opacity: 1;
-  }
-`;
-
-export const Translate = styled.select`
-
-  font-size: 24px;
-  color: white;
-  border: none;
-  background: transparent;
-  transition: all 0.36s;
-
-  &[data-scroll-active="true"] {
-    font-size: 1.4rem;
   }
 `;

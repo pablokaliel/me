@@ -1,13 +1,11 @@
-import { HeroSection } from "./pages/home"
-
+import { HeroSection } from "./pages/home";
 
 function App() {
-
   return (
- <>
- <HeroSection/>
-  </>
-  )
+    <>
+      <HeroSection />
+    </>
+  );
 }
 
-export default App
+export default App;
