@@ -37,12 +37,12 @@ export const Logo = styled.div`
   font-size: 16px;
   transition: all 0.36s;
 
-  a{
-    color:#fff;
+  a {
+    color: #fff;
     transition: all 0.3s;
 
-    &:hover{
-      color:#7440aa;
+    &:hover {
+      color: #7440aa;
     }
   }
 
@@ -64,9 +64,9 @@ export const Nav = styled.nav`
     color: #fff;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
-    display:flex;
-    align-items:center;
-    gap:4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 
     &:hover:not([style*="color: #7440aa"]) {
       color: #7440aa !important;

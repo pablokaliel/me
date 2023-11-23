@@ -55,10 +55,23 @@ export const ContentMe = styled.div`
   padding-top: 6rem;
 `;
 
+export const ContentButton = styled.div`
+  z-index: 999;
+  height: 100%;
+  padding-top: 6rem;
+`;
+
 export const ContentProjects = styled.div`
   z-index: 999;
   height: 100%;
   padding-top: 6rem;
+`;
+
+export const ContentContact = styled.div`
+  z-index: 999;
+  height: 100%;
+  width: 100%;
+  padding-top: 9rem;
 `;
 
 export const Content = styled.div`
@@ -285,7 +298,7 @@ export const CardTechnologies = styled.div`
   padding-left: 50px;
   padding-right: 50px;
   padding-bottom: 50px;
-  max-height: 50%;
+  max-height: 60%;
 
   h4 {
     margin: 30px;
@@ -364,21 +377,20 @@ export const ArticleImage = styled.div`
   justify-content: space-between;
   position: relative;
 
-  div{
-    display:flex;
-    gap:2px;
-    align-items:end;
-    
-    div{
-      display:flex;
-      gap:2px;
-      align-items:center;
+  div {
+    display: flex;
+    gap: 2px;
+    align-items: end;
 
+    div {
+      display: flex;
+      gap: 2px;
+      align-items: center;
     }
 
-    p{
+    p {
       color: #b0ab88;
-    font-size: 0.8rem;
+      font-size: 0.8rem;
     }
   }
 
@@ -393,13 +405,15 @@ export const ArticleImage = styled.div`
 `;
 
 export const ArticleText = styled.div`
-div{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-  p{font-size: 12px;}
-}
+    p {
+      font-size: 12px;
+    }
+  }
   h3 {
     margin-top: 0.5rem;
   }
@@ -418,3 +432,22 @@ div{
     text-align: left;
   }
 `;
+
+export const FormContact = styled.div`
+  display: grid;
+  gap: 15%;
+  grid-template-columns: 30% 58%;
+  padding-right: 110px;
+  padding-left: 110px;
+
+  @media screen and (max-width: 1400px) {
+    margin-top: 5rem;
+    max-width: 1200px;
+  }
+`;
+
+export const Form = styled.div``;
+
+export const CardContact = styled.div``;
+
+export const ContactInfo = styled.div``;

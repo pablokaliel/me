@@ -1,47 +1,19 @@
-import {
-  Container,
-  Content,
-  ContentProjects,
-  ContentMe,
-  AboutMe,
-  Profile,
-  Left,
-  Center,
-  Right,
-  Me,
-  DivImage,
-  DivImg,
-  Infos,
-  Typing,
-  Buttons,
-  Button,
-  ButtonContact,
-  DivTitleAbout,
-  CardTechnologies,
-  PortifolioContainer,
-  Article,
-  ArticleImage,
-  ArticleText,
-} from "./styles";
+import { Container, Content, ContentProjects, ContentMe, AboutMe, Profile, Left, Center, Right, Me, DivImage, DivImg, Infos, Typing, Buttons, Button, ButtonContact, DivTitleAbout, CardTechnologies, PortifolioContainer, Article, ArticleImage, ArticleText, ContentContact, FormContact, CardContact, ContactInfo } from "./styles";
+
 import { FaReact } from "react-icons/fa";
 import { SiTailwindcss, SiStyledcomponents } from "react-icons/si";
 import { IoLogoFirebase } from "react-icons/io5";
 import { PiSignIn } from "react-icons/pi";
+import { EnvelopeSimple, File, GithubLogo, InstagramLogo, LinkedinLogo, Star } from "@phosphor-icons/react";
 
 import type { Engine } from "tsparticles-engine";
 import Particles from "react-particles";
-import { useCallback, useEffect, useState } from "react";
 import { loadSlim } from "tsparticles-slim";
+
+import { useCallback, useEffect, useState } from "react";
+
 import { optionsParticles } from "../../components/optionsParticles";
 import { Navbar } from "../../components/header";
-import {
-  EnvelopeSimple,
-  File,
-  GithubLogo,
-  InstagramLogo,
-  LinkedinLogo,
-  Star,
-} from "@phosphor-icons/react";
 
 interface Repo {
   name: string;
@@ -50,7 +22,6 @@ interface Repo {
   topics: string[];
   stargazers_count: number;
   created_at: string;
-  // outras propriedades necessárias
 }
 
 export function HeroSection() {
@@ -108,13 +79,11 @@ export function HeroSection() {
   useEffect(() => {
     async function getUserInfo() {
       try {
-        const response = await fetch(
-          "https://api.github.com/users/pablokaliel/repos"
-        );
+        const response = await fetch( "https://api.github.com/users/pablokaliel/repos" );
         if (!response.ok) {
           throw new Error("Failed to fetch repositories");
         }
-        const data: Repo[] = await response.json(); // Define o tipo de dados recebidos como um array de Repo
+        const data: Repo[] = await response.json();
 
         const projects = data.filter((repo) => {
           return repo.topics && repo.topics.includes("react");
@@ -125,23 +94,24 @@ export function HeroSection() {
         console.error("Error fetching repositories:", error);
       }
     }
-
     setTimeout(() => {
       getUserInfo();
     }, 3000);
   }, []);
 
-  function formatDate(dateString:string) {
+  function formatDate(dateString: string) {
     const date = new Date(dateString);
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-  
-    return `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`;
+
+    return `${day < 10 ? "0" + day : day}/${
+      month < 10 ? "0" + month : month
+    }/${year}`;
   }
-  
 
   const particlesLoaded = useCallback(async () => {}, []);
+
   return (
     <Container>
       <Navbar />
@@ -158,6 +128,7 @@ export function HeroSection() {
               <InstagramLogo size={18} />
             </a>
           </Left>
+
           <Center>
             <DivImage>
               <DivImg></DivImg>
@@ -173,19 +144,20 @@ export function HeroSection() {
               <ButtonContact>Fale Comigo</ButtonContact>
             </Buttons>
           </Center>
+
           <Right>
-            <a>
-              <EnvelopeSimple />
-            </a>
+            <a> <EnvelopeSimple /> </a>
           </Right>
         </Profile>
       </Content>
+
       <ContentMe id="about">
         <Me>
           <DivTitleAbout>
             <h5>Saiba mais </h5>
             <h1>Sobre Mim</h1>
           </DivTitleAbout>
+
           <AboutMe>
             <p>
               👨‍💻 Olá, seja bem-vindo(a)!👋🏻
@@ -216,6 +188,7 @@ export function HeroSection() {
 
             <CardTechnologies>
               <h4>Tecnologias</h4>
+
               <div>
                 <a target="_blank" href="https://react.dev/">
                   <FaReact size={22} /> <p>ReactJS</p>
@@ -255,20 +228,20 @@ export function HeroSection() {
                     <File size={40} />
                     {repo.stargazers_count > 0 && (
                       <div>
-                        {repo.stargazers_count} <Star size={14} weight="fill" color="#ecaf14"/>
+                        {repo.stargazers_count}{" "}
+                        <Star size={14} weight="fill" color="#ecaf14" />
                       </div>
                     )}
-                  
                   </div>
                   <a target="_blank" href={repo.html_url}>
                     <PiSignIn size={20} />
                   </a>
                 </ArticleImage>
+
                 <ArticleText>
                   <div>
-
-                  <h3>{repo.name}</h3>
-                  <p>{formatDate(repo.created_at)}</p>
+                    <h3>{repo.name}</h3>
+                    <p>{formatDate(repo.created_at)}</p>
                   </div>
                   <div>
                     <p>{repo.description}</p>
@@ -287,7 +260,21 @@ export function HeroSection() {
             {showAllRepos ? "Ver Menos" : "Ver Mais"}
           </Button>
         )}
+        <ContentContact id="contact">
+          <DivTitleAbout>
+            <h5>Entre em </h5>
+            <h1>Contato</h1>
+          </DivTitleAbout>
+
+          <FormContact>
+              <CardContact>
+                <a>link</a>
+              </CardContact>
+              <ContactInfo>form</ContactInfo>
+          </FormContact>
+        </ContentContact>
       </ContentProjects>
+
       <Particles
         id="tsparticles"
         init={particlesInit}

@@ -14,7 +14,6 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["home", "about", "projects", "contact"];
-
       const visibleSection = sections.find((sectionId) => {
         const section = document.getElementById(sectionId);
         if (
@@ -26,10 +25,8 @@ export function Navbar() {
         }
         return null;
       });
-
       setActiveSection(visibleSection || "");
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -41,9 +38,7 @@ export function Navbar() {
         <S.Logo data-scroll-active={isScroll}>
           <a href="#home">
             <Code
-              style={{
-                transition: "width 0.36s ease-in-out, height 0.36s ease-in-out",
-              }}
+              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out", }}
               size={isScroll ? 40 : 60}
             />
           </a>
@@ -54,64 +49,49 @@ export function Navbar() {
             href="#home"
             style={{ color: activeSection === "home" ? "#7440aa" : "#fff" }}
           >
-            <IoHomeOutline  style={{
-                transition: "width 0.36s ease-in-out, height 0.36s ease-in-out",
-              }}
+            <IoHomeOutline
+              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out" }}
               size={isScroll ? 16 : 20}
-             />
+            />
             Inicio
           </a>
           <div
-            style={{
-              width: 40,
-              background: "#ffffff6a",
-              borderRadius: 5,
-              height: 1,
-            }}
+            style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }}
           />
+
           <a
             href="#about"
             style={{ color: activeSection === "about" ? "#7440aa" : "#fff" }}
           >
-            <FaRegUser  style={{
-                transition: "width 0.36s ease-in-out, height 0.36s ease-in-out",
-              }}
+            <FaRegUser
+              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out" }}
               size={isScroll ? 16 : 20}
-             /> sobre
+            />{" "}
+            sobre
           </a>
           <div
-            style={{
-              width: 40,
-              background: "#ffffff6a",
-              borderRadius: 5,
-              height: 1,
-            }}
+            style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }}
           />
 
-          <a href="#projects"
-          style={{ color: activeSection === "projects" ? "#7440aa" : "#fff" }}
+          <a
+            href="#projects"
+            style={{ color: activeSection === "projects" ? "#7440aa" : "#fff" }}
           >
-            <VscFileSubmodule  style={{
-                transition: "width 0.36s ease-in-out, height 0.36s ease-in-out",
-              }}
+            <VscFileSubmodule
+              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out" }}
               size={isScroll ? 16 : 20}
-             />
+            />
             projetos
           </a>
           <div
-            style={{
-              width: 40,
-              background: "#ffffff6a",
-              borderRadius: 5,
-              height: 1,
-            }}
+            style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }}
           />
+
           <a href="#contact">
-            <TiMessages  style={{
-                transition: "width 0.36s ease-in-out, height 0.36s ease-in-out",
-              }}
+            <TiMessages
+              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out" }}
               size={isScroll ? 16 : 20}
-             />
+            />
             contato
           </a>
         </S.Nav>
