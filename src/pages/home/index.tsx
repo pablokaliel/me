@@ -1,6 +1,7 @@
 import {
   Container,
   Content,
+  ContentProjects,
   ContentMe,
   AboutMe,
   Profile,
@@ -17,10 +18,15 @@ import {
   ButtonContact,
   DivTitleAbout,
   CardTechnologies,
+  PortifolioContainer,
+  Article,
+  ArticleImage,
+  ArticleText,
 } from "./styles";
 import { FaReact } from "react-icons/fa";
 import { SiTailwindcss, SiStyledcomponents } from "react-icons/si";
 import { IoLogoFirebase } from "react-icons/io5";
+import { PiSignIn } from "react-icons/pi";
 
 import type { Engine } from "tsparticles-engine";
 import Particles from "react-particles";
@@ -30,10 +36,19 @@ import { optionsParticles } from "../../components/optionsParticles";
 import { Navbar } from "../../components/header";
 import {
   EnvelopeSimple,
+  File,
   GithubLogo,
   InstagramLogo,
   LinkedinLogo,
 } from "@phosphor-icons/react";
+
+interface Repo {
+  name: string;
+  description: string;
+  html_url: string;
+  topics: string[];
+  // outras propriedades necessárias
+}
 
 export function HeroSection() {
   const [typingText, setTypingText] = useState("");
@@ -69,6 +84,48 @@ export function HeroSection() {
 
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
+  }, []);
+
+  const [repos, setRepos] = useState<Repo[]>([]);
+  const [showAllRepos, setShowAllRepos] = useState(false);
+  const [reposToShow, setReposToShow] = useState<Repo[]>([]);
+
+  const toggleShowRepos = () => {
+    setShowAllRepos(!showAllRepos);
+  };
+
+  useEffect(() => {
+    if (showAllRepos) {
+      setReposToShow(repos);
+    } else {
+      setReposToShow(repos.slice(0, 6));
+    }
+  }, [showAllRepos, repos]);
+
+  useEffect(() => {
+    async function getUserInfo() {
+      try {
+        const response = await fetch(
+          "https://api.github.com/users/pablokaliel/repos"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch repositories");
+        }
+        const data: Repo[] = await response.json(); // Define o tipo de dados recebidos como um array de Repo
+
+        const projects = data.filter((repo) => {
+          return repo.topics && repo.topics.includes("react");
+        });
+
+        setRepos(projects);
+      } catch (error) {
+        console.error("Error fetching repositories:", error);
+      }
+    }
+
+    setTimeout(() => {
+      getUserInfo();
+    }, 3000);
   }, []);
 
   const particlesLoaded = useCallback(async () => {}, []);
@@ -120,28 +177,25 @@ export function HeroSection() {
             <p>
               👨‍💻 Olá, seja bem-vindo(a)!👋🏻
               <br />
-              Meu nome é Pablo Kaliel, tenho 22 anos e fui estudante de Analise
-              e Desenvolvimento de Sistemas na Claretiano - Batatais.
+              Me chamo Pablo Kaliel, tenho 22 anos e sou apaixonado por Análise
+              e Desenvolvimento de Sistemas, formado pela Claretiano - Batatais.
               <br />
-              Durante a faculdade aprendi um pouco sobre algumas tecnologias web
-              como: Html,Css,JavaScript e também vi algumas coisas mobile
-              como:IonicFramework, c## e por ultimo vi também sobre Back-end
-              como: Firebase e MySql.
+              Ao longo da minha jornada acadêmica, explorei diversas tecnologias
+              web, como HTML, CSS, JavaScript, e também mergulhei no universo
+              mobile, trabalhando com Ionic Framework e C#. Além disso, adquiri
+              conhecimento em Back-end, utilizando Firebase e MySql.
               <br />
-              Ainda não possuo uma grande experiencias com as tecnologias
-              ultimamente porém venho estudando ReactJS,html,css e tailwind para
-              criar paginas e landingpages. Também utilizei um pouco também de
-              firebase e localstorage para fazer o Back-end de algumas
-              aplicações .
-              <br />
-              Não posso dizer que tenho experiencia ainda, mas acredito eu que
-              com esforço e decidação conseguirei habilidades e experiencias em
-              ReactJS e outras tecnologias.
-              <br />
+              Embora minha experiência prática ainda esteja em desenvolvimento,
+              tenho me dedicado arduamente ao estudo contínuo, especialmente
+              focado em aprimorar minhas habilidades em ReactJS, HTML, CSS e
+              Tailwind para a criação de páginas e landing pages.
+              Complementarmente, explorei o uso de Firebase e localstorage para
+              implementar soluções de Back-end em algumas aplicações.
               <p>
-                Veja meu <a href="#">portfólio</a> .
+                Você pode conferir meu <a href="#">portfólio</a> para conhecer
+                um pouco mais do meu trabalho.
               </p>
-              <p style={{ marginTop: "2.6rem" }}>
+              <p style={{ marginTop: "1.6rem" }}>
                 Veja ao lado algumas tecnologias que tenho trabalhado
                 recentemente:
               </p>
@@ -172,6 +226,41 @@ export function HeroSection() {
           </AboutMe>
         </Me>
       </ContentMe>
+
+      <ContentProjects id="projects">
+        <DivTitleAbout>
+          <h5>Meus </h5>
+          <h1>Projetos</h1>
+        </DivTitleAbout>
+
+        <PortifolioContainer>
+    {reposToShow.length > 0 ? (
+            reposToShow.map((repo, i) => (
+              <Article key={i}>
+                <ArticleImage>
+                  <File size={40}/>
+                  <a target="_blank" href={repo.html_url}><PiSignIn size={20} /></a>
+                </ArticleImage>
+                <ArticleText>
+                  <h3>{repo.name}</h3>
+                  <div>
+                    <p>{repo.description}</p>
+                  </div>
+                  <small>{repo.topics.join(", ")}</small>
+                </ArticleText>
+              </Article>
+            ))
+          ) : (
+            <p>Carregando...</p>
+          )}
+        </PortifolioContainer>
+        {repos.length > 6 && (
+          <Button style={{marginTop:"1.6rem"}} onClick={toggleShowRepos}>
+            {showAllRepos ? "Ver Menos" : "Ver Mais"}
+          </Button>
+        )}
+       
+      </ContentProjects>
       <Particles
         id="tsparticles"
         init={particlesInit}

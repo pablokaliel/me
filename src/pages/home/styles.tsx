@@ -55,6 +55,12 @@ export const ContentMe = styled.div`
   padding-top: 6rem;
 `;
 
+export const ContentProjects = styled.div`
+  z-index: 999;
+  height: 100%;
+  padding-top: 6rem;
+`;
+
 export const Content = styled.div`
   z-index: 999;
   height: 100%;
@@ -227,7 +233,7 @@ export const DivTitleAbout = styled.div`
   text-align: center;
   grid-area: title;
   flex-direction: column;
-  margin-bottom: 7rem;
+  margin-bottom: 5.6rem;
 
   h5 {
     color: #8892b0;
@@ -279,6 +285,7 @@ export const CardTechnologies = styled.div`
   padding-left:50px;
   padding-right:50px;
   padding-bottom:50px;
+  max-height:50%;
 
   h4{margin:30px;}
 
@@ -302,6 +309,8 @@ export const CardTechnologies = styled.div`
     color:#fff;
     align-items:center;
     font-size:0.7rem;
+    max-height:100px;
+    max-width:200px;
 
     transition:all 0.3s ease;
 
@@ -311,4 +320,75 @@ export const CardTechnologies = styled.div`
       transform: translateY(-10px);
     }
   }
+`;
+
+export const PortifolioContainer = styled.div`
+display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3,1fr);
+    width: 74%;
+
+    @media screen and (max-width:1024px) {
+      gap: 1.2rem;
+grid-template-columns: repeat(2,1fr);
+    }
+
+    @media screen and (max-width: 600px){
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    width: 85%;
+}
+`;
+
+export const Article = styled.div`
+    background-color: #7517ac67;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    height: 300px;
+    padding: 2rem 1.5rem;
+    position: relative;
+    transition: var(--transition);
+    transition: transform .3s;
+
+    &:hover{
+      
+    border-color: #ab5dc6;
+    transform: translateY(-10px);
+    }
+`;
+
+export const ArticleImage = styled.div`
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    a{
+      color:#8892b0;
+      transition: all 0.3s;
+      &:hover{
+        color:#fff;
+        scale:1.1;
+      }
+    }
+`;
+
+export const ArticleText = styled.div`
+h3{
+  margin-top: 0.5rem;
+}
+
+p{
+  font-size: .8rem;
+    margin-top: 0.5rem;
+}
+
+small{
+  bottom: 1.5rem;
+    color: #8892b0;
+    font-size: .8rem;
+    left: 1.5rem;
+    position: absolute;
+    text-align: left;
+}
 `;

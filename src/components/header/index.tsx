@@ -88,7 +88,9 @@ export function Navbar() {
             }}
           />
 
-          <a href="#projects">
+          <a href="#projects"
+          style={{ color: activeSection === "projects" ? "#7440aa" : "#fff" }}
+          >
             <VscFileSubmodule  style={{
                 transition: "width 0.36s ease-in-out, height 0.36s ease-in-out",
               }}
