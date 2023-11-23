@@ -37,6 +37,15 @@ export const Logo = styled.div`
   font-size: 16px;
   transition: all 0.36s;
 
+  a{
+    color:#fff;
+    transition: all 0.3s;
+
+    &:hover{
+      color:#7440aa;
+    }
+  }
+
   &[data-scroll-active="true"] {
     width: 40px;
     height: 40px;
@@ -49,20 +58,23 @@ export const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  font-size: 20px;
+  font-size: 16px;
 
   a {
     color: #fff;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
+    display:flex;
+    align-items:center;
+    gap:4px;
 
-    &:hover {
-      color: #7440aa;
+    &:hover:not([style*="color: #7440aa"]) {
+      color: #7440aa !important;
     }
   }
 
   &[data-scroll-active="true"] {
-    font-size: 16px;
+    font-size: 14px;
   }
 `;
 

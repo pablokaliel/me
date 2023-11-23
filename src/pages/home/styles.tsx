@@ -29,6 +29,12 @@ export const Title = styled.h1`
   }
 `;
 
+export const Cursor = styled.h1`
+  height: 100%;
+  width: 1px;
+  background-color: #fff;
+`;
+
 export const ScrollDown = styled.div`
   position: absolute;
   bottom: 8rem;
@@ -127,6 +133,10 @@ export const Me = styled.div`
 
 export const DivImage = styled.div`
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  grid-area: div1;
+  align-items: center;
   h2 {
     font-size: 1.2rem;
   }
@@ -158,14 +168,34 @@ export const Infos = styled.div``;
 export const Typing = styled.div`
   margin-top: 0.5rem;
   height: 19px;
+  position: relative;
+
+  @keyframes blinckCursor {
+    from {
+      background-color: #fff;
+    }
+    to {
+      background-color: transparent;
+    }
+  }
+
+  &::after {
+    content: "";
+    background-color: #fff;
+    border-radius: 5px;
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    animation: blinckCursor 600ms steps(40) infinite normal;
+  }
 `;
 
 export const Button = styled.button`
-  border: 1px solid #8100ab;
+  border: 1px solid #b700ff;
   border-radius: 0.4rem;
   cursor: pointer;
   background-color: transparent;
-  color: #8100ab;
+  color: #b700ff;
   display: inline-block;
   padding: 0.75rem 1.2rem;
   transition: var(--transition);
@@ -174,10 +204,10 @@ export const Button = styled.button`
 `;
 
 export const ButtonContact = styled.button`
-  border: 1px solid #8100ab;
+  border: 1px solid #b700ff;
   border-radius: 0.4rem;
   cursor: pointer;
-  background-color: #8100ab;
+  background-color: #b700ff;
   color: #20013a;
   display: inline-block;
   padding: 0.75rem 1.2rem;
@@ -195,11 +225,90 @@ export const Buttons = styled.div`
 export const DivTitleAbout = styled.div`
   display: flex;
   text-align: center;
+  grid-area: title;
   flex-direction: column;
+  margin-bottom: 7rem;
+
   h5 {
     color: #8892b0;
   }
   h1 {
     color: #8100ab;
+  }
+`;
+
+export const AboutMe = styled.div`
+  margin-left: 110px;
+  margin-right: 110px;
+  gap: 5%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  grid-template-areas:
+    "title title"
+    "div1 div2";
+
+  position: relative;
+  padding-left: 10px;
+
+  a{
+    text-decoration:none;
+    color:#8100ab;
+  }
+
+  &::before {
+    background-color: #8892b0;
+    content: "";
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 1px;
+  }
+`;
+
+export const CardTechnologies = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background-color: #00000070;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:column;
+  padding-left:50px;
+  padding-right:50px;
+  padding-bottom:50px;
+
+  h4{margin:30px;}
+
+  div {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    height: 100%;
+  }
+
+  a{
+    border-radius:8px;
+    list-style:none;
+    border:1px solid #fff;
+    padding:10px;
+    display:flex;
+    gap:8px;
+    flex-direction:column;
+    justify-content:center;
+    color:#fff;
+    align-items:center;
+    font-size:0.7rem;
+
+    transition:all 0.3s ease;
+
+    &:hover{
+      border:1px solid #8100ab;
+      color:#8100ab;
+      transform: translateY(-10px);
+    }
   }
 `;
