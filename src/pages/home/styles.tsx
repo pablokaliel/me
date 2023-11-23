@@ -258,9 +258,9 @@ export const AboutMe = styled.div`
   position: relative;
   padding-left: 10px;
 
-  a{
-    text-decoration:none;
-    color:#8100ab;
+  a {
+    text-decoration: none;
+    color: #8100ab;
   }
 
   &::before {
@@ -281,13 +281,15 @@ export const CardTechnologies = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction:column;
-  padding-left:50px;
-  padding-right:50px;
-  padding-bottom:50px;
-  max-height:50%;
+  flex-direction: column;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+  max-height: 50%;
 
-  h4{margin:30px;}
+  h4 {
+    margin: 30px;
+  }
 
   div {
     display: grid;
@@ -297,98 +299,122 @@ export const CardTechnologies = styled.div`
     height: 100%;
   }
 
-  a{
-    border-radius:8px;
-    list-style:none;
-    border:1px solid #fff;
-    padding:10px;
-    display:flex;
-    gap:8px;
-    flex-direction:column;
-    justify-content:center;
-    color:#fff;
-    align-items:center;
-    font-size:0.7rem;
-    max-height:100px;
-    max-width:200px;
+  a {
+    border-radius: 8px;
+    list-style: none;
+    border: 1px solid #fff;
+    padding: 10px;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    align-items: center;
+    font-size: 0.7rem;
+    max-height: 100px;
+    max-width: 200px;
 
-    transition:all 0.3s ease;
+    transition: all 0.3s ease;
 
-    &:hover{
-      border:1px solid #8100ab;
-      color:#8100ab;
+    &:hover {
+      border: 1px solid #8100ab;
+      color: #8100ab;
       transform: translateY(-10px);
     }
   }
 `;
 
 export const PortifolioContainer = styled.div`
-display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(3,1fr);
-    width: 74%;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  width: 74%;
 
-    @media screen and (max-width:1024px) {
-      gap: 1.2rem;
-grid-template-columns: repeat(2,1fr);
-    }
+  @media screen and (max-width: 1024px) {
+    gap: 1.2rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-    @media screen and (max-width: 600px){
+  @media screen and (max-width: 600px) {
     gap: 1rem;
     grid-template-columns: 1fr;
     width: 85%;
-}
+  }
 `;
 
 export const Article = styled.div`
-    background-color: #7517ac67;
-    border: 1px solid transparent;
-    border-radius: 0.5rem;
-    height: 300px;
-    padding: 2rem 1.5rem;
-    position: relative;
-    transition: var(--transition);
-    transition: transform .3s;
+  background-color: #7517ac67;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  height: 300px;
+  padding: 2rem 1.5rem;
+  position: relative;
+  transition: var(--transition);
+  transition: transform 0.3s;
 
-    &:hover{
-      
+  &:hover {
     border-color: #ab5dc6;
     transform: translateY(-10px);
-    }
+  }
 `;
 
 export const ArticleImage = styled.div`
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
 
-    a{
-      color:#8892b0;
-      transition: all 0.3s;
-      &:hover{
-        color:#fff;
-        scale:1.1;
-      }
+  div{
+    display:flex;
+    gap:2px;
+    align-items:end;
+    
+    div{
+      display:flex;
+      gap:2px;
+      align-items:center;
+
     }
+
+    p{
+      color: #b0ab88;
+    font-size: 0.8rem;
+    }
+  }
+
+  a {
+    color: #8892b0;
+    transition: all 0.3s;
+    &:hover {
+      color: #fff;
+      scale: 1.1;
+    }
+  }
 `;
 
 export const ArticleText = styled.div`
-h3{
-  margin-top: 0.5rem;
-}
+div{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-p{
-  font-size: .8rem;
+  p{font-size: 12px;}
+}
+  h3 {
     margin-top: 0.5rem;
-}
+  }
 
-small{
-  bottom: 1.5rem;
+  p {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  small {
+    bottom: 1.5rem;
     color: #8892b0;
-    font-size: .8rem;
+    font-size: 0.8rem;
     left: 1.5rem;
     position: absolute;
     text-align: left;
-}
+  }
 `;

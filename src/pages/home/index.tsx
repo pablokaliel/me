@@ -40,6 +40,7 @@ import {
   GithubLogo,
   InstagramLogo,
   LinkedinLogo,
+  Star,
 } from "@phosphor-icons/react";
 
 interface Repo {
@@ -47,6 +48,8 @@ interface Repo {
   description: string;
   html_url: string;
   topics: string[];
+  stargazers_count: number;
+  created_at: string;
   // outras propriedades necessárias
 }
 
@@ -127,6 +130,16 @@ export function HeroSection() {
       getUserInfo();
     }, 3000);
   }, []);
+
+  function formatDate(dateString:string) {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+  
+    return `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`;
+  }
+  
 
   const particlesLoaded = useCallback(async () => {}, []);
   return (
@@ -234,15 +247,29 @@ export function HeroSection() {
         </DivTitleAbout>
 
         <PortifolioContainer>
-    {reposToShow.length > 0 ? (
+          {reposToShow.length > 0 ? (
             reposToShow.map((repo, i) => (
               <Article key={i}>
                 <ArticleImage>
-                  <File size={40}/>
-                  <a target="_blank" href={repo.html_url}><PiSignIn size={20} /></a>
+                  <div>
+                    <File size={40} />
+                    {repo.stargazers_count > 0 && (
+                      <div>
+                        {repo.stargazers_count} <Star size={14} weight="fill" color="#ecaf14"/>
+                      </div>
+                    )}
+                  
+                  </div>
+                  <a target="_blank" href={repo.html_url}>
+                    <PiSignIn size={20} />
+                  </a>
                 </ArticleImage>
                 <ArticleText>
+                  <div>
+
                   <h3>{repo.name}</h3>
+                  <p>{formatDate(repo.created_at)}</p>
+                  </div>
                   <div>
                     <p>{repo.description}</p>
                   </div>
@@ -254,12 +281,12 @@ export function HeroSection() {
             <p>Carregando...</p>
           )}
         </PortifolioContainer>
+
         {repos.length > 6 && (
-          <Button style={{marginTop:"1.6rem"}} onClick={toggleShowRepos}>
+          <Button style={{ marginTop: "1.6rem" }} onClick={toggleShowRepos}>
             {showAllRepos ? "Ver Menos" : "Ver Mais"}
           </Button>
         )}
-       
       </ContentProjects>
       <Particles
         id="tsparticles"
