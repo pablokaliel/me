@@ -3,7 +3,7 @@ import { IOptions, RecursivePartial } from 'tsparticles-engine'
 export const optionsParticles: RecursivePartial<IOptions> = {
   background: {
     color: {
-      value: '#20013a'
+      value: '#10002B'
     }
   },
   fpsLimit: 120,
@@ -34,7 +34,7 @@ export const optionsParticles: RecursivePartial<IOptions> = {
       value: '#ffffff'
     },
     links: {
-      color: '#ffffff',
+      color: '#E0AAFF',
       distance: 150,
       enable: true,
       opacity: 0.5,

@@ -110,7 +110,7 @@ export const Left = styled.div`
     color: #fff;
     transition: all 0.3s ease-in;
     &:hover {
-      color: #b700ff;
+      color: #9d4edd;
       scale: 1.2;
     }
   }
@@ -139,7 +139,7 @@ export const Right = styled.div`
     color: #fff;
     transition: all 0.3s ease-in;
     &:hover {
-      color: #b700ff;
+      color: #9d4edd;
       scale: 1.2;
     }
   }
@@ -162,7 +162,7 @@ export const DivImage = styled.div`
 `;
 
 export const DivImg = styled.div`
-  border: 2px solid #c801ffa3;
+  border: 2px solid #7b2cbf;
   width: 192px;
   height: 194px;
   border-radius: 5px;
@@ -210,27 +210,41 @@ export const Typing = styled.div`
 `;
 
 export const Button = styled.button`
-  border: 1px solid #b700ff;
+  border: 1px solid #7b2cbf;
   border-radius: 0.4rem;
   cursor: pointer;
   background-color: transparent;
-  color: #b700ff;
+  color: #7b2cbf;
   display: inline-block;
   padding: 0.75rem 1.2rem;
   transition: var(--transition);
   width: -moz-max-content;
   width: max-content;
+
+  transition: all 0.3s;
+  color: #e0aaff;
+  &:hover {
+    background-color: #c77dff;
+    color: #fff;
+  }
 `;
 
 export const ButtonContact = styled.button`
-  border: 1px solid #b700ff;
+  border: 1px solid #7b2cbf;
   border-radius: 0.4rem;
   cursor: pointer;
-  background-color: #b700ff;
+  background-color: #7b2cbf;
   color: #20013a;
   display: inline-block;
   padding: 0.75rem 1.2rem;
   transition: var(--transition);
+
+  transition: all 0.3s;
+  color: #e0aaff;
+  &:hover {
+    background-color: #c77dff;
+    color: #fff;
+  }
 
   width: max-content;
 `;
@@ -249,10 +263,10 @@ export const DivTitleAbout = styled.div`
   margin-bottom: 5.6rem;
 
   h5 {
-    color: #8892b0;
+    color: #e0aaff;
   }
   h1 {
-    color: #8100ab;
+    color: #ffffff;
   }
 `;
 
@@ -273,11 +287,11 @@ export const AboutMe = styled.div`
 
   a {
     text-decoration: none;
-    color: #8100ab;
+    color: #e0aaff;
   }
 
   &::before {
-    background-color: #8892b0;
+    background-color: #e0aaff;
     content: "";
     height: 100%;
     position: absolute;
@@ -330,8 +344,8 @@ export const CardTechnologies = styled.div`
     transition: all 0.3s ease;
 
     &:hover {
-      border: 1px solid #8100ab;
-      color: #8100ab;
+      border: 1px solid #e0aaff;
+      color: #a06fbc;
       transform: translateY(-10px);
     }
   }
@@ -356,17 +370,16 @@ export const PortifolioContainer = styled.div`
 `;
 
 export const Article = styled.div`
-  background-color: #7517ac67;
   border: 1px solid transparent;
-  border-radius: 0.5rem;
-  height: 300px;
+
   padding: 2rem 1.5rem;
   position: relative;
   transition: var(--transition);
   transition: transform 0.3s;
+  background-color: #0d0022c4;
 
   &:hover {
-    border-color: #ab5dc6;
+    border-color: #7b2cbf;
     transform: translateY(-10px);
   }
 `;
@@ -376,6 +389,7 @@ export const ArticleImage = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
+  margin-bottom: 1rem;
 
   div {
     display: flex;
@@ -395,7 +409,7 @@ export const ArticleImage = styled.div`
   }
 
   a {
-    color: #8892b0;
+    color: #7b2cbf;
     transition: all 0.3s;
     &:hover {
       color: #fff;
@@ -405,6 +419,7 @@ export const ArticleImage = styled.div`
 `;
 
 export const ArticleText = styled.div`
+  margin-top: 0.7rem;
   div {
     display: flex;
     align-items: center;
@@ -412,6 +427,7 @@ export const ArticleText = styled.div`
 
     p {
       font-size: 12px;
+      margin-bottom: 1rem;
     }
   }
   h3 {
@@ -425,7 +441,7 @@ export const ArticleText = styled.div`
 
   small {
     bottom: 1.5rem;
-    color: #8892b0;
+    color: #e0aaff;
     font-size: 0.8rem;
     left: 1.5rem;
     position: absolute;
@@ -450,7 +466,39 @@ export const FormContact = styled.div`
     max-width: 1200px;
   }
 `;
+export const DivImageRepo = styled.div`
+  width: 100%;
+  height: 100px;
+  position: relative;
 
+  div {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) );
+    z-index: 2;
+    pointer-events: none;
+  }
+`;
 export const Form = styled.div``;
 
 export const CardContact = styled.div``;

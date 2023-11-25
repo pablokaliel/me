@@ -42,7 +42,7 @@ export const Logo = styled.div`
     transition: all 0.3s;
 
     &:hover {
-      color: #7440aa;
+      color: #E0AAFF;
     }
   }
 
@@ -68,8 +68,8 @@ export const Nav = styled.nav`
     align-items: center;
     gap: 4px;
 
-    &:hover:not([style*="color: #7440aa"]) {
-      color: #7440aa !important;
+    &:hover:not([style*="color: #E0AAFF"]) {
+      color: #E0AAFF !important;
     }
   }
 

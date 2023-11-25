@@ -1,4 +1,4 @@
-import { Container, Content, ContentProjects, ContentMe, AboutMe, Profile, Left, Center, Right, Me, DivImage, DivImg, Infos, Typing, Buttons, Button, ButtonContact, DivTitleAbout, CardTechnologies, PortifolioContainer, Article, ArticleImage, ArticleText, ContentContact, FormContact, CardContact, ContactInfo } from "./styles";
+import { Container, Content, ContentProjects, ContentMe, AboutMe, Profile, Left, Center, Right, Me, DivImage, DivImg, Infos, Typing, Buttons, Button, ButtonContact, DivTitleAbout, CardTechnologies, PortifolioContainer, Article, ArticleImage, ArticleText, DivImageRepo, ContentContact, FormContact, CardContact, ContactInfo } from "./styles";
 
 import { FaReact } from "react-icons/fa";
 import { SiTailwindcss, SiStyledcomponents } from "react-icons/si";
@@ -22,6 +22,7 @@ interface Repo {
   topics: string[];
   stargazers_count: number;
   created_at: string;
+  images: string[];
 }
 
 export function HeroSection() {
@@ -76,6 +77,31 @@ export function HeroSection() {
     }
   }, [showAllRepos, repos]);
 
+  async function fetchReadmeImages(owner: string, repo: string) {
+    try {
+      const readmeResponse = await fetch( `https://api.github.com/repos/${owner}/${repo}/readme` );
+      if (!readmeResponse.ok) {
+        throw new Error("Failed to fetch README.md");
+      }
+      const readmeData = await readmeResponse.json();
+      const readmeContent = atob(readmeData.content);
+      const imageRegex = /<img.*?src=["']([^"']+)["']/g;
+      const imageUrls: string[] = [];
+      let match;
+
+      while ((match = imageRegex.exec(readmeContent)) !== null) {
+        imageUrls.push(match[1]);
+      }
+
+      console.log("URLs das imagens encontradas:", imageUrls);
+
+      return imageUrls;
+    } catch (error) {
+      console.error("Erro ao buscar imagens do README.md:", error);
+      return [];
+    }
+  }
+
   useEffect(() => {
     async function getUserInfo() {
       try {
@@ -83,13 +109,18 @@ export function HeroSection() {
         if (!response.ok) {
           throw new Error("Failed to fetch repositories");
         }
-        const data: Repo[] = await response.json();
+        const data = await response.json();
 
-        const projects = data.filter((repo) => {
+        const projects = data.filter((repo: { topics: string[] }) => {
           return repo.topics && repo.topics.includes("react");
         });
 
-        setRepos(projects);
+        const reposWithImages: Repo[] = [];
+        for (const repo of projects) {
+          const images = await fetchReadmeImages("pablokaliel", repo.name);
+          reposWithImages.push({ ...repo, images });
+        }
+        setRepos(reposWithImages);
       } catch (error) {
         console.error("Error fetching repositories:", error);
       }
@@ -237,6 +268,17 @@ export function HeroSection() {
                     <PiSignIn size={20} />
                   </a>
                 </ArticleImage>
+                <DivImageRepo>
+                  {repo.images && repo.images.length > 0 && (
+                    <DivImageRepo>
+                      {repo.images.map((imageUrl: string, index: number) => (
+                        <div key={index}>
+                          <img src={imageUrl} alt={`Imagem ${index + 1}`} />
+                        </div>
+                      ))}
+                    </DivImageRepo>
+                  )}
+                </DivImageRepo>
 
                 <ArticleText>
                   <div>
@@ -267,10 +309,10 @@ export function HeroSection() {
           </DivTitleAbout>
 
           <FormContact>
-              <CardContact>
-                <a>link</a>
-              </CardContact>
-              <ContactInfo>form</ContactInfo>
+            <CardContact>
+              <a>link</a>
+            </CardContact>
+            <ContactInfo>form</ContactInfo>
           </FormContact>
         </ContentContact>
       </ContentProjects>
