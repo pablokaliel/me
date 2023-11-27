@@ -65,7 +65,7 @@ interface Repo {
 }
 
 export function HeroSection() {
-  const [contentA, setContentA] = useState(
+  const [contentA] = useState(
     <div style={{ width: "100%" }}>
       <GithubLogo size={24} />
       <CardInfos>
@@ -75,7 +75,7 @@ export function HeroSection() {
       </CardInfos>
     </div>
   );
-  const [contentB, setContentB] = useState(
+  const [contentB] = useState(
     <div style={{ width: "100%" }}>
       <EnvelopeSimple size={24}/>
       <CardInfos>
@@ -85,7 +85,7 @@ export function HeroSection() {
       </CardInfos>
     </div>
   );
-  const [contentC, setContentC] = useState(
+  const [contentC] = useState(
     <div style={{ width: "100%" }}>
       <DiscordLogo size={24}/>
       <CardInfos>
@@ -95,15 +95,20 @@ export function HeroSection() {
       </CardInfos>
     </div>
   );
+  const [contentIndex, setContentIndex] = useState(0);
+  const contents = [contentA, contentB, contentC];
 
   const handleSwapContent = () => {
-    // Salvando o conteúdo de A temporariamente
-    const tempContentA = contentA;
-    // Trocando o conteúdo entre A e B
-    setContentA(contentB);
-    setContentB(contentC);
-    setContentC(tempContentA);
+    setContentIndex((prevIndex) => (prevIndex + 1) % contents.length);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setContentIndex((prevIndex) => (prevIndex + 1) % contents.length);
+    }, 5000); // Muda a cada 5 segundos (5000 milissegundos)
+
+    return () => clearInterval(interval);
+  }, []);
 
   const [typingText, setTypingText] = useState("");
   const words = ["Tailwind", "React", "Styled-Components"];
@@ -388,15 +393,15 @@ export function HeroSection() {
 
           <FormContact>
             <CardContact>
-              <CardContactsA onClick={handleSwapContent}>
-                <Contact>{contentA}</Contact>
-              </CardContactsA>
-              <CardContactsB onClick={handleSwapContent}>
-                <Contact>{contentB}</Contact>
-              </CardContactsB>
-              <CardContactsC onClick={handleSwapContent}>
-                <Contact>{contentC}</Contact>
-              </CardContactsC>
+            <CardContactsA onClick={handleSwapContent}>
+          <Contact>{contents[(contentIndex) % contents.length]}</Contact>
+        </CardContactsA>
+        <CardContactsB onClick={handleSwapContent}>
+          <Contact>{contents[(contentIndex + 1) % contents.length]}</Contact>
+        </CardContactsB>
+        <CardContactsC onClick={handleSwapContent}>
+          <Contact>{contents[(contentIndex + 2) % contents.length]}</Contact>
+        </CardContactsC>
             </CardContact>
           </FormContact>
         </ContentContact>

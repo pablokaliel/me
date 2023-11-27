@@ -541,6 +541,7 @@ export const CardContactsA = styled.div`
   background-color: #0d0022;
   height: max-content;
   transition: all 0.3s;
+  
 
   &:hover {
     scale: 1.05;
