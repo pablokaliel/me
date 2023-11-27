@@ -1,10 +1,49 @@
-import { Container, Content, ContentProjects, ContentMe, AboutMe, Profile, Left, Center, Right, Me, DivImage, DivImg, Infos, Typing, Buttons, Button, ButtonContact, DivTitleAbout, CardTechnologies, PortifolioContainer, Article, ArticleImage, ArticleText, DivImageRepo, ContentContact, FormContact, CardContact, ContactInfo } from "./styles";
-
+import {
+  Container,
+  Content,
+  ContentProjects,
+  CardInfos,
+  Contact,
+  CardContactsA,
+  CardContactsB,
+  CardContactsC,
+  ContentMe,
+  DivStar,
+  AboutMe,
+  Profile,
+  Left,
+  Center,
+  Right,
+  Me,
+  DivImage,
+  DivImg,
+  Infos,
+  Typing,
+  Buttons,
+  Button,
+  ButtonContact,
+  DivTitleAbout,
+  CardTechnologies,
+  PortifolioContainer,
+  Article,
+  ArticleText,
+  DivImageRepo,
+  ContentContact,
+  FormContact,
+  CardContact,
+  ContactInfo,
+} from "./styles";
 import { FaReact } from "react-icons/fa";
 import { SiTailwindcss, SiStyledcomponents } from "react-icons/si";
 import { IoLogoFirebase } from "react-icons/io5";
-import { PiSignIn } from "react-icons/pi";
-import { EnvelopeSimple, File, GithubLogo, InstagramLogo, LinkedinLogo, Star } from "@phosphor-icons/react";
+import {
+  DiscordLogo,
+  EnvelopeSimple,
+  GithubLogo,
+  InstagramLogo,
+  LinkedinLogo,
+  Star,
+} from "@phosphor-icons/react";
 
 import type { Engine } from "tsparticles-engine";
 import Particles from "react-particles";
@@ -26,6 +65,46 @@ interface Repo {
 }
 
 export function HeroSection() {
+  const [contentA, setContentA] = useState(
+    <div style={{ width: "100%" }}>
+      <GithubLogo size={24} />
+      <CardInfos>
+        <h4>GitHub</h4>
+        <h5>PabloKaliel</h5>
+        <a href="#">Conheça meus projetos</a>
+      </CardInfos>
+    </div>
+  );
+  const [contentB, setContentB] = useState(
+    <div style={{ width: "100%" }}>
+      <EnvelopeSimple size={24}/>
+      <CardInfos>
+        <h4>Email</h4>
+        <h5>pablo.kalyell.441@gmail.com</h5>
+        <a href="#">Fale Comigo</a>
+      </CardInfos>
+    </div>
+  );
+  const [contentC, setContentC] = useState(
+    <div style={{ width: "100%" }}>
+      <DiscordLogo size={24}/>
+      <CardInfos>
+        <h4>Discord</h4>
+        <h5>ShaZzaN</h5>
+        <a href="#">vamos conversar!</a>
+      </CardInfos>
+    </div>
+  );
+
+  const handleSwapContent = () => {
+    // Salvando o conteúdo de A temporariamente
+    const tempContentA = contentA;
+    // Trocando o conteúdo entre A e B
+    setContentA(contentB);
+    setContentB(contentC);
+    setContentC(tempContentA);
+  };
+
   const [typingText, setTypingText] = useState("");
   const words = ["Tailwind", "React", "Styled-Components"];
   const [wordIndex, setWordIndex] = useState(0);
@@ -79,7 +158,9 @@ export function HeroSection() {
 
   async function fetchReadmeImages(owner: string, repo: string) {
     try {
-      const readmeResponse = await fetch( `https://api.github.com/repos/${owner}/${repo}/readme` );
+      const readmeResponse = await fetch(
+        `https://api.github.com/repos/${owner}/${repo}/readme`
+      );
       if (!readmeResponse.ok) {
         throw new Error("Failed to fetch README.md");
       }
@@ -92,7 +173,6 @@ export function HeroSection() {
       while ((match = imageRegex.exec(readmeContent)) !== null) {
         imageUrls.push(match[1]);
       }
-
       console.log("URLs das imagens encontradas:", imageUrls);
 
       return imageUrls;
@@ -105,7 +185,9 @@ export function HeroSection() {
   useEffect(() => {
     async function getUserInfo() {
       try {
-        const response = await fetch( "https://api.github.com/users/pablokaliel/repos" );
+        const response = await fetch(
+          "https://api.github.com/users/pablokaliel/repos"
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch repositories");
         }
@@ -177,7 +259,10 @@ export function HeroSection() {
           </Center>
 
           <Right>
-            <a> <EnvelopeSimple /> </a>
+            <a>
+              {" "}
+              <EnvelopeSimple />{" "}
+            </a>
           </Right>
         </Profile>
       </Content>
@@ -222,21 +307,22 @@ export function HeroSection() {
 
               <div>
                 <a target="_blank" href="https://react.dev/">
-                  <FaReact size={22} /> <p>ReactJS</p>
+                  <FaReact size={22} color="#e0aaff" /> <p>ReactJS</p>
                 </a>
                 <a target="_blank" href="https://firebase.google.com/?hl=pt">
-                  <IoLogoFirebase size={22} />
+                  <IoLogoFirebase size={22} color="#e0aaff" />
                   <p>FireBase</p>
                 </a>
                 <a
                   target="_blank"
                   href="https://developer.mozilla.org/pt-BR/docs/Web/CSS"
                 >
-                  <SiStyledcomponents size={35} />
+                  <SiStyledcomponents size={35} color="#e0aaff" />
                   <p>Styled-Components</p>
                 </a>
                 <a target="_blank" href="https://tailwindcss.com/">
-                  <SiTailwindcss size={22} /> <p>TailwindCSS</p>
+                  <SiTailwindcss size={22} color="#e0aaff" />
+                  <p>TailwindCSS</p>
                 </a>
               </div>
             </CardTechnologies>
@@ -253,21 +339,13 @@ export function HeroSection() {
         <PortifolioContainer>
           {reposToShow.length > 0 ? (
             reposToShow.map((repo, i) => (
-              <Article key={i}>
-                <ArticleImage>
-                  <div>
-                    <File size={40} />
-                    {repo.stargazers_count > 0 && (
-                      <div>
-                        {repo.stargazers_count}{" "}
-                        <Star size={14} weight="fill" color="#ecaf14" />
-                      </div>
-                    )}
-                  </div>
-                  <a target="_blank" href={repo.html_url}>
-                    <PiSignIn size={20} />
-                  </a>
-                </ArticleImage>
+              <Article target="_blank" href={repo.html_url} key={i}>
+                {repo.stargazers_count > 0 && (
+                  <DivStar>
+                    <span>{repo.stargazers_count} </span>
+                    <Star size={14} weight="fill" color="#ecaf14" />
+                  </DivStar>
+                )}
                 <DivImageRepo>
                   {repo.images && repo.images.length > 0 && (
                     <DivImageRepo>
@@ -283,7 +361,7 @@ export function HeroSection() {
                 <ArticleText>
                   <div>
                     <h3>{repo.name}</h3>
-                    <p>{formatDate(repo.created_at)}</p>
+                    <span>{formatDate(repo.created_at)}</span>
                   </div>
                   <div>
                     <p>{repo.description}</p>
@@ -310,11 +388,19 @@ export function HeroSection() {
 
           <FormContact>
             <CardContact>
-              <a>link</a>
+              <CardContactsA onClick={handleSwapContent}>
+                <Contact>{contentA}</Contact>
+              </CardContactsA>
+              <CardContactsB onClick={handleSwapContent}>
+                <Contact>{contentB}</Contact>
+              </CardContactsB>
+              <CardContactsC onClick={handleSwapContent}>
+                <Contact>{contentC}</Contact>
+              </CardContactsC>
             </CardContact>
-            <ContactInfo>form</ContactInfo>
           </FormContact>
         </ContentContact>
+        <ContactInfo>info</ContactInfo>
       </ContentProjects>
 
       <Particles

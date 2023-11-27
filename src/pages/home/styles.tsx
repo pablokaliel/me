@@ -35,20 +35,6 @@ export const Cursor = styled.h1`
   background-color: #fff;
 `;
 
-export const ScrollDown = styled.div`
-  position: absolute;
-  bottom: 8rem;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  & > p {
-    font-size: 1.6rem;
-  }
-`;
-
 export const ContentMe = styled.div`
   z-index: 999;
   height: 100%;
@@ -162,11 +148,12 @@ export const DivImage = styled.div`
 `;
 
 export const DivImg = styled.div`
-  border: 2px solid #7b2cbf;
   width: 192px;
   height: 194px;
+  border: 2px solid #7b2cbf;
   border-radius: 5px;
   margin-bottom: 1.5rem;
+
   position: relative;
 
   &::after {
@@ -179,6 +166,12 @@ export const DivImg = styled.div`
     height: 100%;
     top: -15px;
     left: -15px;
+    transition: all 0.3s ease;
+  }
+
+  &:hover::after {
+    top: -20px;
+    left: -20px;
   }
 `;
 
@@ -329,13 +322,13 @@ export const CardTechnologies = styled.div`
   a {
     border-radius: 8px;
     list-style: none;
-    border: 1px solid #fff;
+    border: 1px solid #7b15bf9f;
     padding: 10px;
     display: flex;
     gap: 8px;
     flex-direction: column;
     justify-content: center;
-    color: #fff;
+    color: #dbd8dc;
     align-items: center;
     font-size: 0.7rem;
     max-height: 100px;
@@ -369,18 +362,21 @@ export const PortifolioContainer = styled.div`
   }
 `;
 
-export const Article = styled.div`
-  border: 1px solid transparent;
-
+export const Article = styled.a`
+  border: 1px solid #3f197d75;
+  background-color: #0d0022c4;
+  text-decoration: none;
+  color: #eeeeee;
+  border-radius: 8px;
   padding: 2rem 1.5rem;
   position: relative;
-  transition: var(--transition);
-  transition: transform 0.3s;
-  background-color: #0d0022c4;
+  transition: all 0.3s;
+  box-shadow: 8px 8px 8px rgb(0 0 0 / 33%);
 
   &:hover {
     border-color: #7b2cbf;
     transform: translateY(-10px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
   }
 `;
 
@@ -439,6 +435,12 @@ export const ArticleText = styled.div`
     margin-top: 0.5rem;
   }
 
+  span {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    color: #9888a0;
+  }
+
   small {
     bottom: 1.5rem;
     color: #e0aaff;
@@ -468,19 +470,17 @@ export const FormContact = styled.div`
 `;
 export const DivImageRepo = styled.div`
   width: 100%;
-  height: 100px;
   position: relative;
 
   div {
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    position: relative;
   }
 
   img {
     width: 100%;
     height: 100%;
+    aspect-ratio: 16/9;
 
     display: block;
     position: relative;
@@ -494,13 +494,124 @@ export const DivImageRepo = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient( to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) );
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     z-index: 2;
     pointer-events: none;
   }
 `;
+
+export const DivStar = styled.div`
+  position: absolute;
+  top: 3px;
+  right: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  span {
+    font-size: 0.8rem;
+  }
+`;
+
 export const Form = styled.div``;
 
-export const CardContact = styled.div``;
+export const Contact = styled.div`
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+  display: flex;
+  position: relative;
+`;
 
+export const CardContactsA = styled.div`
+  width: 260px;
+  z-index: 5;
+  transform: translate3d(-0, 0px, 0px) rotateZ(0deg) scale(1);
+  transition-duration: 0ms;
+  transform-origin: center bottom;
+  background: #ededed;
+  border: 1px solid #fff;
+  border-radius: 1.2rem;
+  padding: 6rem 1.2rem;
+  text-align: center;
+  position: absolute;
+  aspect-ratio: 9/16;
+  cursor: pointer;
+  border: 1px solid #aa0bffba;
+  background-color: #0d0022;
+  height: max-content;
+  transition: all 0.3s;
+
+  &:hover {
+    scale: 1.05;
+  }
+`;
+export const CardContactsB = styled.div`
+  width: 260px;
+  z-index: 3;
+  transform: translate3d(calc(-0px + -7.25%), 0px, -100px) rotateZ(-2deg)
+    scale(1);
+  transition-duration: 0ms;
+  transform-origin: center bottom;
+  background: #ededed;
+  border: 1px solid #fff;
+  border-radius: 1.2rem;
+  padding: 6rem 1.2rem;
+  text-align: center;
+  position: absolute;
+  aspect-ratio: 9/16;
+  cursor: pointer;
+  border: 1px solid #aa0bffba;
+  background-color: #0d0022;
+  height: max-content;
+  transition: all 0.3s;
+  &:hover {
+    scale: 1.05;
+  }
+`;
+
+export const CardContactsC = styled.div`
+  width: 260px;
+  z-index: 2;
+  transform: translate3d(calc(0px + -13%), 0px, -200px) rotateZ(-4deg) scale(1);
+  transition-duration: 0ms;
+  transform-origin: center bottom;
+  background: #ededed;
+  border: 1px solid #fff;
+  border-radius: 1.2rem;
+  padding: 6rem 1.2rem;
+  text-align: center;
+  position: absolute;
+  aspect-ratio: 9/16;
+  cursor: pointer;
+  border: 1px solid #aa0bffba;
+  background-color: #0d0022c4;
+  height: max-content;
+  transition: all 0.3s;
+  &:hover {
+    scale: 1.05;
+  }
+`;
+
+export const CardContact = styled.div`
+  overflow: visible;
+  perspective: 1200px;
+  max-width: 260px;
+  h5 {
+    color: #d7d4d4;
+  }
+
+  a {
+    color: #e0aaff;
+    text-decoration: none;
+    transition: all 0.3s;
+    &:hover {
+      color: #ffffff;
+    }
+  }
+`;
+
+export const CardInfos = styled.div`
+  margin-bottom: 0.6rem;
+`;
 export const ContactInfo = styled.div``;
