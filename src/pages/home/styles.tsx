@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const Container = styled.main`
   height: 100vh;
@@ -305,41 +306,61 @@ export const CardTechnologies = styled.div`
   padding-left: 50px;
   padding-right: 50px;
   padding-bottom: 50px;
-  max-height: 60%;
+  max-height: 70%;
 
   h4 {
     margin: 30px;
   }
+`;
 
-  div {
-    display: grid;
-    gap: 18px;
-    grid-template-columns: repeat(2, 1fr);
-    width: 100%;
-    height: 100%;
+export const Card = styled.div`
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  height: 100%;
+`;
+
+export const Technologies = styled.div`
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  font-size: 0.7rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #8a11daaf;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border: 1px solid #8a11da6e;
+    background-color: #10002bb1;
   }
 
   a {
+    background-color: #10002b;
+    position: absolute;
     border-radius: 8px;
+    border: 1px solid #4906769f;
+    width: 100%;
+    height: 100%;
     list-style: none;
-    border: 1px solid #7b15bf9f;
-    padding: 10px;
     display: flex;
     gap: 8px;
     flex-direction: column;
     justify-content: center;
     color: #dbd8dc;
     align-items: center;
-    font-size: 0.7rem;
-    max-height: 100px;
-    max-width: 200px;
-
+    top: -10px;
+    left: -10px;
     transition: all 0.3s ease;
+    padding: 5px;
 
     &:hover {
-      border: 1px solid #e0aaff;
-      color: #a06fbc;
-      transform: translateY(-10px);
+      top: -15px;
+      border: 1px solid #a600ff;
+      left: -15px;
     }
   }
 `;
@@ -523,10 +544,27 @@ export const Contact = styled.div`
   position: relative;
 `;
 
-export const CardContactsA = styled.div`
+export const CardContactsA = styled(motion.div)`
   width: 260px;
   z-index: 5;
-  transform: translate3d(-0, 0px, 0px) rotateZ(0deg) scale(1);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  /* Definição do estado inicial */
+  ${props =>
+    props.initial &&
+    `
+    transform: translate3d(0px, 0px, 0px) rotateZ(0deg) scale(1);
+    opacity: 1;
+  `}
+
+  /* Definição do estado animado */
+  ${props =>
+    props.animate &&
+    `
+    transform: translate3d(0px, 0px, 0px) rotateZ(0deg) scale(1);
+    opacity: 1;
+    transition: all 0.3s;
+  `}
   transition-duration: 0ms;
   transform-origin: center bottom;
   background: #ededed;
@@ -536,22 +574,37 @@ export const CardContactsA = styled.div`
   text-align: center;
   position: absolute;
   aspect-ratio: 9/16;
-  cursor: pointer;
+  cursor: grab;
   border: 1px solid #aa0bffba;
   background-color: #0d0022;
   height: max-content;
   transition: all 0.3s;
-  
 
   &:hover {
     scale: 1.05;
   }
 `;
-export const CardContactsB = styled.div`
+export const CardContactsB = styled(motion.div)`
   width: 260px;
   z-index: 3;
-  transform: translate3d(calc(-0px + -7.25%), 0px, -100px) rotateZ(-2deg)
-    scale(1);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+ /* Definição do estado inicial */
+ ${props =>
+    props.initial &&
+    `
+    transform: translate3d(calc(-0px + -7.25%), 0px, -100px) rotateZ(-2deg) scale(1);
+    opacity: 1;
+  `}
+
+  /* Definição do estado animado */
+  ${props =>
+    props.animate &&
+    `
+    transform: translate3d(calc(-0px + -7.25%), 0px, -100px) rotateZ(-2deg) scale(1);
+    opacity: 1;
+    transition: all 0.3s;
+  `}
   transition-duration: 0ms;
   transform-origin: center bottom;
   background: #ededed;
@@ -561,7 +614,7 @@ export const CardContactsB = styled.div`
   text-align: center;
   position: absolute;
   aspect-ratio: 9/16;
-  cursor: pointer;
+  cursor: grab;
   border: 1px solid #aa0bffba;
   background-color: #0d0022;
   height: max-content;
@@ -571,10 +624,27 @@ export const CardContactsB = styled.div`
   }
 `;
 
-export const CardContactsC = styled.div`
+export const CardContactsC = styled(motion.div)`
   width: 260px;
   z-index: 2;
-  transform: translate3d(calc(0px + -13%), 0px, -200px) rotateZ(-4deg) scale(1);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  /* Definição do estado inicial */
+  ${props =>
+    props.initial &&
+    `
+    transform: translate3d(calc(0px + -13%), 0px, -200px) rotateZ(-4deg) scale(1);
+    opacity: 1;
+  `}
+
+  /* Definição do estado animado */
+  ${props =>
+    props.animate &&
+    `
+    transform: translate3d(calc(0px + -13%), 0px, -200px) rotateZ(-4deg) scale(1);
+    opacity: 1;
+    transition: all 0.3s;
+  `}
   transition-duration: 0ms;
   transform-origin: center bottom;
   background: #ededed;
@@ -584,7 +654,7 @@ export const CardContactsC = styled.div`
   text-align: center;
   position: absolute;
   aspect-ratio: 9/16;
-  cursor: pointer;
+  cursor: grab;
   border: 1px solid #aa0bffba;
   background-color: #0d0022c4;
   height: max-content;
@@ -594,7 +664,7 @@ export const CardContactsC = styled.div`
   }
 `;
 
-export const CardContact = styled.div`
+export const CardContact = styled(motion.div)`
   overflow: visible;
   perspective: 1200px;
   max-width: 260px;

@@ -1,9 +1,11 @@
 import {
   Container,
   Content,
+  Card,
   ContentProjects,
+  Technologies,
   CardInfos,
-  Contact,
+
   CardContactsA,
   CardContactsB,
   CardContactsC,
@@ -53,6 +55,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { optionsParticles } from "../../components/optionsParticles";
 import { Navbar } from "../../components/header";
+import {  PanInfo } from "framer-motion";
 
 interface Repo {
   name: string;
@@ -65,7 +68,7 @@ interface Repo {
 }
 
 export function HeroSection() {
-  const [contentA] = useState(
+  const ContentCardA = (
     <div style={{ width: "100%" }}>
       <GithubLogo size={24} />
       <CardInfos>
@@ -75,9 +78,9 @@ export function HeroSection() {
       </CardInfos>
     </div>
   );
-  const [contentB] = useState(
+  const ContentCardB = (
     <div style={{ width: "100%" }}>
-      <EnvelopeSimple size={24}/>
+      <EnvelopeSimple size={24} />
       <CardInfos>
         <h4>Email</h4>
         <h5>pablo.kalyell.441@gmail.com</h5>
@@ -85,9 +88,9 @@ export function HeroSection() {
       </CardInfos>
     </div>
   );
-  const [contentC] = useState(
+  const ContentCardC = (
     <div style={{ width: "100%" }}>
-      <DiscordLogo size={24}/>
+      <DiscordLogo size={24} />
       <CardInfos>
         <h4>Discord</h4>
         <h5>ShaZzaN</h5>
@@ -96,22 +99,27 @@ export function HeroSection() {
     </div>
   );
   const [contentIndex, setContentIndex] = useState(0);
-  const contents = [contentA, contentB, contentC];
+  const contents = [ContentCardA, ContentCardB, ContentCardC];
 
-  const handleSwapContent = () => {
-    setContentIndex((prevIndex) => (prevIndex + 1) % contents.length);
+  const handleDragEnd = (
+    event: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
+    const offset = info.offset.x;
+    const mouseEvent = event as MouseEvent;
+    const threshold = 100;
+
+    if (mouseEvent && offset > threshold) {
+      setContentIndex(
+        (prevIndex) => (prevIndex - 1 + contents.length) % contents.length
+      );
+    } else if (mouseEvent && offset < -threshold) {
+      setContentIndex((prevIndex) => (prevIndex + 1) % contents.length);
+    }
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setContentIndex((prevIndex) => (prevIndex + 1) % contents.length);
-    }, 5000); // Muda a cada 5 segundos (5000 milissegundos)
-
-    return () => clearInterval(interval);
-  }, []);
-
   const [typingText, setTypingText] = useState("");
-  const words = ["Tailwind", "React", "Styled-Components"];
+  const words = ["TailwindCSS", "React", "Styled-Components"];
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const delay = 2000;
@@ -298,8 +306,8 @@ export function HeroSection() {
               Complementarmente, explorei o uso de Firebase e localstorage para
               implementar soluções de Back-end em algumas aplicações.
               <p>
-                Você pode conferir meu <a href="#">portfólio</a> para conhecer
-                um pouco mais do meu trabalho.
+                Você pode conferir meu <a href="#projects">portfólio</a> para
+                conhecer um pouco mais do meu trabalho.
               </p>
               <p style={{ marginTop: "1.6rem" }}>
                 Veja ao lado algumas tecnologias que tenho trabalhado
@@ -310,26 +318,34 @@ export function HeroSection() {
             <CardTechnologies>
               <h4>Tecnologias</h4>
 
-              <div>
-                <a target="_blank" href="https://react.dev/">
-                  <FaReact size={22} color="#e0aaff" /> <p>ReactJS</p>
-                </a>
-                <a target="_blank" href="https://firebase.google.com/?hl=pt">
-                  <IoLogoFirebase size={22} color="#e0aaff" />
-                  <p>FireBase</p>
-                </a>
-                <a
-                  target="_blank"
-                  href="https://developer.mozilla.org/pt-BR/docs/Web/CSS"
-                >
-                  <SiStyledcomponents size={35} color="#e0aaff" />
-                  <p>Styled-Components</p>
-                </a>
-                <a target="_blank" href="https://tailwindcss.com/">
-                  <SiTailwindcss size={22} color="#e0aaff" />
-                  <p>TailwindCSS</p>
-                </a>
-              </div>
+              <Card>
+                <Technologies>
+                  <a target="_blank" href="https://react.dev/">
+                    <FaReact size={22} color="#e0aaff" /> <p>ReactJS</p>
+                  </a>
+                </Technologies>
+                <Technologies>
+                  <a target="_blank" href="https://firebase.google.com/?hl=pt">
+                    <IoLogoFirebase size={22} color="#e0aaff" />
+                    <p>FireBase</p>
+                  </a>
+                </Technologies>
+                <Technologies>
+                  <a
+                    target="_blank"
+                    href="https://developer.mozilla.org/pt-BR/docs/Web/CSS"
+                  >
+                    <SiStyledcomponents size={35} color="#e0aaff" />
+                    <p>Styled-Components</p>
+                  </a>
+                </Technologies>
+                <Technologies>
+                  <a target="_blank" href="https://tailwindcss.com/">
+                    <SiTailwindcss size={22} color="#e0aaff" />
+                    <p>TailwindCSS</p>
+                  </a>
+                </Technologies>
+              </Card>
             </CardTechnologies>
           </AboutMe>
         </Me>
@@ -393,15 +409,59 @@ export function HeroSection() {
 
           <FormContact>
             <CardContact>
-            <CardContactsA onClick={handleSwapContent}>
-          <Contact>{contents[(contentIndex) % contents.length]}</Contact>
-        </CardContactsA>
-        <CardContactsB onClick={handleSwapContent}>
-          <Contact>{contents[(contentIndex + 1) % contents.length]}</Contact>
-        </CardContactsB>
-        <CardContactsC onClick={handleSwapContent}>
-          <Contact>{contents[(contentIndex + 2) % contents.length]}</Contact>
-        </CardContactsC>
+              <CardContactsA
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                onDragEnd={(event, info) => handleDragEnd(event, info)}
+                animate={{
+                  x: 0,
+                  opacity: 1,
+                  scale: 1,
+                  rotateZ: 0,
+                  transition: {
+                    type: "spring",
+                    damping: 10,
+                  },
+                }}
+              >
+                {contents[contentIndex % contents.length]}
+              </CardContactsA>
+
+              <CardContactsB
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                onDragEnd={(event, info) => handleDragEnd(event, info)}
+                animate={{
+                  x: 0,
+                  opacity: 1,
+                  scale: 1,
+                  rotateZ: -2,
+                  transition: {
+                    type: "spring",
+                    damping: 10,
+                  },
+                }}
+              >
+                {contents[(contentIndex + 1) % contents.length]}
+              </CardContactsB>
+
+              <CardContactsC
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                onDragEnd={(event, info) => handleDragEnd(event, info)}
+                animate={{
+                  x: 0,
+                  opacity: 1,
+                  scale: 1,
+                  rotateZ: -4,
+                  transition: {
+                    type: "spring",
+                    damping: 10,
+                  },
+                }}
+              >
+                {contents[(contentIndex + 2) % contents.length]}
+              </CardContactsC>
             </CardContact>
           </FormContact>
         </ContentContact>
