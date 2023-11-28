@@ -549,7 +549,6 @@ export const CardContactsA = styled(motion.div)`
   z-index: 5;
   transform-style: preserve-3d;
   backface-visibility: hidden;
-  /* Definição do estado inicial */
   ${props =>
     props.initial &&
     `
@@ -557,7 +556,6 @@ export const CardContactsA = styled(motion.div)`
     opacity: 1;
   `}
 
-  /* Definição do estado animado */
   ${props =>
     props.animate &&
     `
@@ -589,7 +587,6 @@ export const CardContactsB = styled(motion.div)`
   z-index: 3;
   transform-style: preserve-3d;
   backface-visibility: hidden;
- /* Definição do estado inicial */
  ${props =>
     props.initial &&
     `
@@ -597,7 +594,6 @@ export const CardContactsB = styled(motion.div)`
     opacity: 1;
   `}
 
-  /* Definição do estado animado */
   ${props =>
     props.animate &&
     `
@@ -629,7 +625,6 @@ export const CardContactsC = styled(motion.div)`
   z-index: 2;
   transform-style: preserve-3d;
   backface-visibility: hidden;
-  /* Definição do estado inicial */
   ${props =>
     props.initial &&
     `
@@ -637,7 +632,6 @@ export const CardContactsC = styled(motion.div)`
     opacity: 1;
   `}
 
-  /* Definição do estado animado */
   ${props =>
     props.animate &&
     `

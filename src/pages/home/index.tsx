@@ -1,50 +1,8 @@
-import {
-  Container,
-  Content,
-  Card,
-  ContentProjects,
-  Technologies,
-  CardInfos,
-  CardContactsA,
-  CardContactsB,
-  CardContactsC,
-  ContentMe,
-  DivStar,
-  AboutMe,
-  Profile,
-  Left,
-  Center,
-  Right,
-  Me,
-  DivImage,
-  DivImg,
-  Infos,
-  Typing,
-  Buttons,
-  Button,
-  ButtonContact,
-  DivTitleAbout,
-  CardTechnologies,
-  PortifolioContainer,
-  Article,
-  ArticleText,
-  DivImageRepo,
-  ContentContact,
-  FormContact,
-  CardContact,
-  ContactInfo,
-} from "./styles";
+import { Container, Content, Card, ContentProjects, Technologies, CardInfos, CardContactsA, CardContactsB, CardContactsC, ContentMe, DivStar, AboutMe, Profile, Left, Center, Right, Me, DivImage, DivImg, Infos, Typing, Buttons, Button, ButtonContact, DivTitleAbout, CardTechnologies, PortifolioContainer, Article, ArticleText, DivImageRepo, ContentContact, FormContact, CardContact, ContactInfo } from "./styles";
 import { FaReact } from "react-icons/fa";
 import { SiTailwindcss, SiStyledcomponents } from "react-icons/si";
 import { IoLogoFirebase } from "react-icons/io5";
-import {
-  DiscordLogo,
-  EnvelopeSimple,
-  GithubLogo,
-  InstagramLogo,
-  LinkedinLogo,
-  Star,
-} from "@phosphor-icons/react";
+import { DiscordLogo, EnvelopeSimple, GithubLogo, InstagramLogo, LinkedinLogo, Star } from "@phosphor-icons/react";
 
 import type { Engine } from "tsparticles-engine";
 import Particles from "react-particles";
@@ -54,7 +12,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { optionsParticles } from "../../components/optionsParticles";
 import { Navbar } from "../../components/header";
-import { motion, PanInfo, useMotionValue, useTransform } from "framer-motion";
+import { PanInfo, useMotionValue, useTransform } from "framer-motion";
 
 interface Repo {
   name: string;
@@ -157,6 +115,12 @@ export function HeroSection() {
     await loadSlim(engine);
   }, []);
 
+  const xB = useMotionValue(0);
+  const rotateB = useTransform(xB, [-100, 0, 100], [-10, 0, 10]);
+
+  const xC = useMotionValue(0);
+  const rotateC = useTransform(xC, [-100, 0, 100], [-5, 0, 5]);
+
   const [repos, setRepos] = useState<Repo[]>([]);
   const [showAllRepos, setShowAllRepos] = useState(false);
   const [reposToShow, setReposToShow] = useState<Repo[]>([]);
@@ -175,9 +139,7 @@ export function HeroSection() {
 
   async function fetchReadmeImages(owner: string, repo: string) {
     try {
-      const readmeResponse = await fetch(
-        `https://api.github.com/repos/${owner}/${repo}/readme`
-      );
+      const readmeResponse = await fetch( `https://api.github.com/repos/${owner}/${repo}/readme` );
       if (!readmeResponse.ok) {
         throw new Error("Failed to fetch README.md");
       }
@@ -200,14 +162,12 @@ export function HeroSection() {
   }
   const x = useMotionValue(0);
 
-  const rotate = useTransform(x, [-100, 0, 100], [-20, 0, 20]);
+  const rotate = useTransform(x, [-100, 0, 100], [-30, 0, 30]);
 
   useEffect(() => {
     async function getUserInfo() {
       try {
-        const response = await fetch(
-          "https://api.github.com/users/pablokaliel/repos"
-        );
+        const response = await fetch( "https://api.github.com/users/pablokaliel/repos" );
         if (!response.ok) {
           throw new Error("Failed to fetch repositories");
         }
@@ -430,25 +390,19 @@ export function HeroSection() {
               </CardContactsA>
 
               <CardContactsB
-              
-                style={{ x, rotate }}
+                style={{ x: xB, rotate: rotateB }}
                 animate={{
                   rotateZ: -2,
                 }}
-                
-                
               >
                 {contents[(contentIndex + 1) % contents.length]}
               </CardContactsB>
 
               <CardContactsC
-              
-                style={{ x, rotate }}
+                style={{ x: xC, rotate: rotateC }}
                 animate={{
                   rotateZ: -4,
                 }}
-                
-                
               >
                 {contents[(contentIndex + 2) % contents.length]}
               </CardContactsC>
