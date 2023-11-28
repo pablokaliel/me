@@ -208,12 +208,14 @@ export const Infos = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  
 `;
 
 export const Typing = styled.div`
   margin-top: 0.5rem;
   height: 19px;
   position: relative;
+  color:#d8b8eb;
 
   @keyframes blinckCursor {
     from {
