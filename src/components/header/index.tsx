@@ -25,6 +25,7 @@ export function Navbar() {
         }
         return null;
       });
+      console.log("Seção visível:", visibleSection);
       setActiveSection(visibleSection || "");
     };
     window.addEventListener("scroll", handleScroll);
@@ -87,9 +88,11 @@ export function Navbar() {
             style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }}
           />
 
-          <a href="#contact">
+          <a href="#contact"
+            style={{ color: activeSection === "contact" ? "#7440aa" : "#fff" }}
+          >
             <TiMessages
-              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out" }}
+             
               size={isScroll ? 16 : 20}
             />
             contato

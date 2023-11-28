@@ -1,48 +1,9 @@
-import {
-  Container,
-  Content,
-  Card,
-  ContentProjects,
-  Technologies,
-  CardInfos,
-  CardContactsA,
-  ContentMe,
-  DivStar,
-  AboutMe,
-  Profile,
-  Left,
-  Center,
-  Right,
-  Me,
-  DivImage,
-  DivImg,
-  Infos,
-  Typing,
-  Buttons,
-  Button,
-  ButtonContact,
-  DivTitleAbout,
-  CardTechnologies,
-  PortifolioContainer,
-  Article,
-  ArticleText,
-  DivImageRepo,
-  ContentContact,
-  FormContact,
-  CardContact,
-  ContactInfo,
-} from "./styles";
+import {Container,Content,Card,ContentProjects,Technologies,CardInfos,CardContactsA,ContentMe,DivStar,AboutMe,Profile,Left,Center,Right,ContentFooter,Me,DivImage,DivImg,Infos,Typing,Buttons,Button,ButtonContact,DivTitleAbout,CardTechnologies,PortifolioContainer,Article,ArticleText,DivImageRepo,ContentContact,FormContact,CardContact,ContactInfo } from "./styles";
+
 import { FaReact } from "react-icons/fa";
 import { SiTailwindcss, SiStyledcomponents } from "react-icons/si";
 import { IoLogoFirebase } from "react-icons/io5";
-import {
-  DiscordLogo,
-  EnvelopeSimple,
-  GithubLogo,
-  InstagramLogo,
-  LinkedinLogo,
-  Star,
-} from "@phosphor-icons/react";
+import { DiscordLogo, EnvelopeSimple, GithubLogo, InstagramLogo, LinkedinLogo, Star} from "@phosphor-icons/react";
 
 import type { Engine } from "tsparticles-engine";
 import Particles from "react-particles";
@@ -54,14 +15,8 @@ import { optionsParticles } from "../../components/optionsParticles";
 import { Navbar } from "../../components/header";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-cards";
-
-import "./swipper.css";
-
-// import required modules
 import { EffectCards } from "swiper/modules";
 
 interface Repo {
@@ -75,9 +30,6 @@ interface Repo {
 }
 
 export function HeroSection() {
-
-  
-
   const [typingText, setTypingText] = useState("");
   const words = ["TailwindCSS", "React", "Styled-Components"];
   const [wordIndex, setWordIndex] = useState(0);
@@ -113,7 +65,6 @@ export function HeroSection() {
     await loadSlim(engine);
   }, []);
 
-
   const [repos, setRepos] = useState<Repo[]>([]);
   const [showAllRepos, setShowAllRepos] = useState(false);
   const [reposToShow, setReposToShow] = useState<Repo[]>([]);
@@ -132,21 +83,15 @@ export function HeroSection() {
 
   async function fetchReadmeImages(owner: string, repo: string) {
     try {
-      const readmeResponse = await fetch(
-        `https://api.github.com/repos/${owner}/${repo}/readme`
-      );
-      if (!readmeResponse.ok) {
-        throw new Error("Failed to fetch README.md");
-      }
+      const readmeResponse = await fetch( `https://api.github.com/repos/${owner}/${repo}/readme` );
+      if (!readmeResponse.ok) { throw new Error("Failed to fetch README.md"); }
       const readmeData = await readmeResponse.json();
       const readmeContent = atob(readmeData.content);
       const imageRegex = /<img.*?src=["']([^"']+)["']/g;
       const imageUrls: string[] = [];
       let match;
 
-      while ((match = imageRegex.exec(readmeContent)) !== null) {
-        imageUrls.push(match[1]);
-      }
+      while ((match = imageRegex.exec(readmeContent)) !== null) { imageUrls.push(match[1]); }
       console.log("URLs das imagens encontradas:", imageUrls);
 
       return imageUrls;
@@ -159,9 +104,7 @@ export function HeroSection() {
   useEffect(() => {
     async function getUserInfo() {
       try {
-        const response = await fetch(
-          "https://api.github.com/users/pablokaliel/repos"
-        );
+        const response = await fetch( "https://api.github.com/users/pablokaliel/repos" );
         if (!response.ok) {
           throw new Error("Failed to fetch repositories");
         }
@@ -192,9 +135,7 @@ export function HeroSection() {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
 
-    return `${day < 10 ? "0" + day : day}/${
-      month < 10 ? "0" + month : month
-    }/${year}`;
+    return `${day < 10 ? "0" + day : day}/${ month < 10 ? "0" + month : month }/${year}`;
   }
 
   const particlesLoaded = useCallback(async () => {}, []);
@@ -377,44 +318,70 @@ export function HeroSection() {
                 className="mySwiper"
               >
                 <SwiperSlide>
-                  <CardContactsA><div style={{ width: "100%" }}>
-                    <GithubLogo size={24} />
-                    <CardInfos>
-                      <h4>GitHub</h4>
-                      <h5>PabloKaliel</h5>
-                      <a href="#">Conheça meus projetos</a>
-                    </CardInfos>
-                  </div>
-                    </CardContactsA>
+                  <CardContactsA>
+                    <div style={{ width: "100%" }}>
+                      <GithubLogo size={24} />
+                      <CardInfos>
+                        <h4>GitHub</h4>
+                        <h5>PabloKaliel</h5>
+                        <a href="#">Conheça meus projetos</a>
+                      </CardInfos>
+                    </div>
+                  </CardContactsA>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <CardContactsA><div style={{ width: "100%" }}>
-                    <EnvelopeSimple size={24} />
-                    <CardInfos>
-                      <h4>Email</h4>
-                      <h5>pablo.kalyell.441@gmail.com</h5>
-                      <a href="#">Fale Comigo</a>
-                    </CardInfos>
-                  </div>
-                    </CardContactsA>
+                  <CardContactsA>
+                    <div style={{ width: "100%" }}>
+                      <EnvelopeSimple size={24} />
+                      <CardInfos>
+                        <h4>Email</h4>
+                        <h5>pablo.kalyell.441@gmail.com</h5>
+                        <a href="#">Fale Comigo</a>
+                      </CardInfos>
+                    </div>
+                  </CardContactsA>
                 </SwiperSlide>
                 <SwiperSlide>
-                  {" "}
-                  <CardContactsA><div style={{ width: "100%" }}>
-                    <DiscordLogo size={24} />
-                    <CardInfos>
-                      <h4>Discord</h4>
-                      <h5>ShaZzaN</h5>
-                      <a href="#">vamos conversar!</a>
-                    </CardInfos>
-                  </div>
-                    </CardContactsA>
+                  <CardContactsA>
+                    <div style={{ width: "100%" }}>
+                      <DiscordLogo size={24} />
+                      <CardInfos>
+                        <h4>Discord</h4>
+                        <h5>ShaZzaN</h5>
+                        <a href="#">vamos conversar!</a>
+                      </CardInfos>
+                    </div>
+                  </CardContactsA>
                 </SwiperSlide>
               </Swiper>
             </CardContact>
+            <ContactInfo>
+              <div>
+                <input placeholder="Nome Completo" />
+              </div>
+
+              <div>
+                <input placeholder=" E-mail" />
+              </div>
+              <div>
+                <textarea placeholder=" Escreva sua mensagem..." />
+              </div>
+              <button>Enviar</button>
+            </ContactInfo>
           </FormContact>
         </ContentContact>
-        <ContactInfo>info</ContactInfo>
+      <ContentFooter>
+         <div >
+          <span>Portfilio</span>
+         </div>
+         <div>
+          <p><GithubLogo size={24}/></p>
+          <p><LinkedinLogo size={24}/></p>
+         </div>
+         <div>
+          <small>© Pablo Kaliel. Todos direitos reservados.</small>
+         </div>
+      </ContentFooter>
       </ContentProjects>
 
       <Particles

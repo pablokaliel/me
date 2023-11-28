@@ -36,6 +36,34 @@ export const Cursor = styled.h1`
   background-color: #fff;
 `;
 
+export const ContentFooter = styled.div`
+  height: 100%;
+  width:100%;
+  margin-top: 9rem;
+  background: rgba(0, 0, 0, 0.142);
+    border-bottom: 1px solid #261137;
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+  span{
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 500;
+    transition: all .2s ease;
+    color:#c77dff;
+  }
+  small{
+    color:#c77dff;
+
+  }
+  div{
+    margin: 2.5rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:1rem;
+  }
+`;
+
 export const ContentMe = styled.div`
   z-index: 999;
   height: 100%;
@@ -480,7 +508,7 @@ export const ArticleText = styled.div`
 export const FormContact = styled.div`
   display: grid;
   gap: 15%;
-  grid-template-columns: 30% 58%;
+  grid-template-columns: 30% 50%;
   padding-right: 110px;
   padding-left: 110px;
 
@@ -545,24 +573,24 @@ export const Contact = styled.div`
 `;
 
 export const CardContactsA = styled(motion.div)`
-  width:100%;
+  width: 100%;
   padding: 5rem 1rem;
 
   border-radius: 1.2rem;
-display:flex;
-align-items:center;
-justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   border: 1px solid #aa0bffba;
   background-color: #0d0022;
-  height:100%;
-
+  height: 100%;
 `;
 
 export const CardContact = styled(motion.div)`
   overflow: visible;
   perspective: 1200px;
   max-width: 260px;
+
   h5 {
     color: #d7d4d4;
   }
@@ -579,14 +607,66 @@ export const CardContact = styled(motion.div)`
 
 export const CardInfos = styled.div`
   margin-bottom: 0.6rem;
-  h4{
-    font-size:16px;
+  h4 {
+    font-size: 16px;
   }
-  h5{
-    font-size:13.58px;
+  h5 {
+    font-size: 13.58px;
   }
-  a{
-    font-size:16px;
+  a {
+    font-size: 16px;
   }
 `;
-export const ContactInfo = styled.div``;
+export const ContactInfo = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+
+  button {
+    color: #e0aaff;
+    width: 150px;
+    border: none;
+    outline: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    background-color: #7b2cbf;
+
+    display: inline-block;
+    padding: 0.75rem 1.2rem;
+    width: -moz-max-content;
+    width: max-content;
+  }
+
+  div {
+    width: 100%;
+    input {
+      background: transparent;
+      border: 2px solid rgba(136, 146, 176, 0.337);
+      border-radius: 0.5rem;
+      color: #fff;
+      padding: 1rem;
+      resize: none;
+      width: 100%;
+      outline: none;
+      &:focus {
+        border: 2px solid rgba(155, 79, 218, 0.689);
+      }
+    }
+
+    textarea {
+      outline: none;
+      &:focus {
+        border: 2px solid rgba(155, 79, 218, 0.689);
+      }
+      background: transparent;
+      border: 2px solid rgba(136, 146, 176, 0.337);
+      border-radius: 0.5rem;
+      color: #fff;
+      padding: 1rem;
+      resize: none;
+      width: 100%;
+      height: 190px;
+    }
+  }
+`;
