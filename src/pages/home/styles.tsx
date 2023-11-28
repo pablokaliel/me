@@ -38,29 +38,28 @@ export const Cursor = styled.h1`
 
 export const ContentFooter = styled.div`
   height: 100%;
-  width:100%;
+  width: 100%;
   margin-top: 9rem;
   background: rgba(0, 0, 0, 0.142);
-    border-bottom: 1px solid #261137;
-    backdrop-filter: blur(13.5px);
-    -webkit-backdrop-filter: blur(13.5px);
-  span{
+  border-bottom: 1px solid #261137;
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+  span {
     display: inline-block;
     font-size: 2rem;
     font-weight: 500;
-    transition: all .2s ease;
-    color:#c77dff;
+    transition: all 0.2s ease;
+    color: #c77dff;
   }
-  small{
-    color:#c77dff;
-
+  small {
+    color: #c77dff;
   }
-  div{
+  div {
     margin: 2.5rem;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
   }
 `;
 
@@ -204,7 +203,12 @@ export const DivImg = styled.div`
   }
 `;
 
-export const Infos = styled.div``;
+export const Infos = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
 
 export const Typing = styled.div`
   margin-top: 0.5rem;
