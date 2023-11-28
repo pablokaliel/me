@@ -5,7 +5,6 @@ import {
   ContentProjects,
   Technologies,
   CardInfos,
-
   CardContactsA,
   CardContactsB,
   CardContactsC,
@@ -55,7 +54,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { optionsParticles } from "../../components/optionsParticles";
 import { Navbar } from "../../components/header";
-import {  PanInfo } from "framer-motion";
+import { motion, PanInfo, useMotionValue, useTransform } from "framer-motion";
 
 interface Repo {
   name: string;
@@ -103,18 +102,23 @@ export function HeroSection() {
 
   const handleDragEnd = (
     event: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo
+    info: PanInfo,
+    card: string
   ) => {
     const offset = info.offset.x;
     const mouseEvent = event as MouseEvent;
     const threshold = 100;
 
     if (mouseEvent && offset > threshold) {
-      setContentIndex(
-        (prevIndex) => (prevIndex - 1 + contents.length) % contents.length
-      );
+      if (card === "CardContactsA") {
+        setContentIndex(
+          (prevIndex) => (prevIndex - 1 + contents.length) % contents.length
+        );
+      }
     } else if (mouseEvent && offset < -threshold) {
-      setContentIndex((prevIndex) => (prevIndex + 1) % contents.length);
+      if (card === "CardContactsA") {
+        setContentIndex((prevIndex) => (prevIndex + 1) % contents.length);
+      }
     }
   };
 
@@ -194,6 +198,9 @@ export function HeroSection() {
       return [];
     }
   }
+  const x = useMotionValue(0);
+
+  const rotate = useTransform(x, [-100, 0, 100], [-20, 0, 20]);
 
   useEffect(() => {
     async function getUserInfo() {
@@ -410,55 +417,38 @@ export function HeroSection() {
           <FormContact>
             <CardContact>
               <CardContactsA
+                className="card"
+                style={{ x, rotate }}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
-                onDragEnd={(event, info) => handleDragEnd(event, info)}
-                animate={{
-                  x: 0,
-                  opacity: 1,
-                  scale: 1,
-                  rotateZ: 0,
-                  transition: {
-                    type: "spring",
-                    damping: 10,
-                  },
-                }}
+                onDragEnd={(event, info) =>
+                  handleDragEnd(event, info, "CardContactsA")
+                }
+                transition={{ type: "spring", stiffness: 200, damping: 800 }}
               >
                 {contents[contentIndex % contents.length]}
               </CardContactsA>
 
               <CardContactsB
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                onDragEnd={(event, info) => handleDragEnd(event, info)}
+              
+                style={{ x, rotate }}
                 animate={{
-                  x: 0,
-                  opacity: 1,
-                  scale: 1,
                   rotateZ: -2,
-                  transition: {
-                    type: "spring",
-                    damping: 10,
-                  },
                 }}
+                
+                
               >
                 {contents[(contentIndex + 1) % contents.length]}
               </CardContactsB>
 
               <CardContactsC
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                onDragEnd={(event, info) => handleDragEnd(event, info)}
+              
+                style={{ x, rotate }}
                 animate={{
-                  x: 0,
-                  opacity: 1,
-                  scale: 1,
                   rotateZ: -4,
-                  transition: {
-                    type: "spring",
-                    damping: 10,
-                  },
                 }}
+                
+                
               >
                 {contents[(contentIndex + 2) % contents.length]}
               </CardContactsC>
