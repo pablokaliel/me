@@ -545,117 +545,18 @@ export const Contact = styled.div`
 `;
 
 export const CardContactsA = styled(motion.div)`
-  width: 260px;
-  z-index: 5;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  ${props =>
-    props.initial &&
-    `
-    transform: translate3d(0px, 0px, 0px) rotateZ(0deg) scale(1);
-    opacity: 1;
-  `}
+  width:100%;
+  padding: 5rem 1rem;
 
-  ${props =>
-    props.animate &&
-    `
-    transform: translate3d(0px, 0px, 0px) rotateZ(0deg) scale(1);
-    opacity: 1;
-    transition: all 0.3s;
-  `}
-  transition-duration: 0ms;
-  transform-origin: center bottom;
-  background: #ededed;
-  border: 1px solid #fff;
   border-radius: 1.2rem;
-  padding: 6rem 1.2rem;
+display:flex;
+align-items:center;
+justify-content:center;
   text-align: center;
-  position: absolute;
-  aspect-ratio: 9/16;
-  cursor: grab;
   border: 1px solid #aa0bffba;
   background-color: #0d0022;
-  height: max-content;
-  transition: all 0.3s;
+  height:100%;
 
-  &:hover {
-    scale: 1.05;
-  }
-`;
-export const CardContactsB = styled(motion.div)`
-  width: 260px;
-  z-index: 3;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
- ${props =>
-    props.initial &&
-    `
-    transform: translate3d(calc(-0px + -7.25%), 0px, -100px) rotateZ(-2deg) scale(1);
-    opacity: 1;
-  `}
-
-  ${props =>
-    props.animate &&
-    `
-    transform: translate3d(calc(-0px + -7.25%), 0px, -100px) rotateZ(-2deg) scale(1);
-    opacity: 1;
-    transition: all 0.3s;
-  `}
-  transition-duration: 0ms;
-  transform-origin: center bottom;
-  background: #ededed;
-  border: 1px solid #fff;
-  border-radius: 1.2rem;
-  padding: 6rem 1.2rem;
-  text-align: center;
-  position: absolute;
-  aspect-ratio: 9/16;
-  cursor: grab;
-  border: 1px solid #aa0bffba;
-  background-color: #0d0022;
-  height: max-content;
-  transition: all 0.3s;
-  &:hover {
-    scale: 1.05;
-  }
-`;
-
-export const CardContactsC = styled(motion.div)`
-  width: 260px;
-  z-index: 2;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  ${props =>
-    props.initial &&
-    `
-    transform: translate3d(calc(0px + -13%), 0px, -200px) rotateZ(-4deg) scale(1);
-    opacity: 1;
-  `}
-
-  ${props =>
-    props.animate &&
-    `
-    transform: translate3d(calc(0px + -13%), 0px, -200px) rotateZ(-4deg) scale(1);
-    opacity: 1;
-    transition: all 0.3s;
-  `}
-  transition-duration: 0ms;
-  transform-origin: center bottom;
-  background: #ededed;
-  border: 1px solid #fff;
-  border-radius: 1.2rem;
-  padding: 6rem 1.2rem;
-  text-align: center;
-  position: absolute;
-  aspect-ratio: 9/16;
-  cursor: grab;
-  border: 1px solid #aa0bffba;
-  background-color: #0d0022c4;
-  height: max-content;
-  transition: all 0.3s;
-  &:hover {
-    scale: 1.05;
-  }
 `;
 
 export const CardContact = styled(motion.div)`
@@ -678,5 +579,14 @@ export const CardContact = styled(motion.div)`
 
 export const CardInfos = styled.div`
   margin-bottom: 0.6rem;
+  h4{
+    font-size:16px;
+  }
+  h5{
+    font-size:13.58px;
+  }
+  a{
+    font-size:16px;
+  }
 `;
 export const ContactInfo = styled.div``;

@@ -1,8 +1,48 @@
-import { Container, Content, Card, ContentProjects, Technologies, CardInfos, CardContactsA, CardContactsB, CardContactsC, ContentMe, DivStar, AboutMe, Profile, Left, Center, Right, Me, DivImage, DivImg, Infos, Typing, Buttons, Button, ButtonContact, DivTitleAbout, CardTechnologies, PortifolioContainer, Article, ArticleText, DivImageRepo, ContentContact, FormContact, CardContact, ContactInfo } from "./styles";
+import {
+  Container,
+  Content,
+  Card,
+  ContentProjects,
+  Technologies,
+  CardInfos,
+  CardContactsA,
+  ContentMe,
+  DivStar,
+  AboutMe,
+  Profile,
+  Left,
+  Center,
+  Right,
+  Me,
+  DivImage,
+  DivImg,
+  Infos,
+  Typing,
+  Buttons,
+  Button,
+  ButtonContact,
+  DivTitleAbout,
+  CardTechnologies,
+  PortifolioContainer,
+  Article,
+  ArticleText,
+  DivImageRepo,
+  ContentContact,
+  FormContact,
+  CardContact,
+  ContactInfo,
+} from "./styles";
 import { FaReact } from "react-icons/fa";
 import { SiTailwindcss, SiStyledcomponents } from "react-icons/si";
 import { IoLogoFirebase } from "react-icons/io5";
-import { DiscordLogo, EnvelopeSimple, GithubLogo, InstagramLogo, LinkedinLogo, Star } from "@phosphor-icons/react";
+import {
+  DiscordLogo,
+  EnvelopeSimple,
+  GithubLogo,
+  InstagramLogo,
+  LinkedinLogo,
+  Star,
+} from "@phosphor-icons/react";
 
 import type { Engine } from "tsparticles-engine";
 import Particles from "react-particles";
@@ -12,7 +52,17 @@ import { useCallback, useEffect, useState } from "react";
 
 import { optionsParticles } from "../../components/optionsParticles";
 import { Navbar } from "../../components/header";
-import { PanInfo, useMotionValue, useTransform } from "framer-motion";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-cards";
+
+import "./swipper.css";
+
+// import required modules
+import { EffectCards } from "swiper/modules";
 
 interface Repo {
   name: string;
@@ -25,60 +75,8 @@ interface Repo {
 }
 
 export function HeroSection() {
-  const ContentCardA = (
-    <div style={{ width: "100%" }}>
-      <GithubLogo size={24} />
-      <CardInfos>
-        <h4>GitHub</h4>
-        <h5>PabloKaliel</h5>
-        <a href="#">Conheça meus projetos</a>
-      </CardInfos>
-    </div>
-  );
-  const ContentCardB = (
-    <div style={{ width: "100%" }}>
-      <EnvelopeSimple size={24} />
-      <CardInfos>
-        <h4>Email</h4>
-        <h5>pablo.kalyell.441@gmail.com</h5>
-        <a href="#">Fale Comigo</a>
-      </CardInfos>
-    </div>
-  );
-  const ContentCardC = (
-    <div style={{ width: "100%" }}>
-      <DiscordLogo size={24} />
-      <CardInfos>
-        <h4>Discord</h4>
-        <h5>ShaZzaN</h5>
-        <a href="#">vamos conversar!</a>
-      </CardInfos>
-    </div>
-  );
-  const [contentIndex, setContentIndex] = useState(0);
-  const contents = [ContentCardA, ContentCardB, ContentCardC];
 
-  const handleDragEnd = (
-    event: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo,
-    card: string
-  ) => {
-    const offset = info.offset.x;
-    const mouseEvent = event as MouseEvent;
-    const threshold = 100;
-
-    if (mouseEvent && offset > threshold) {
-      if (card === "CardContactsA") {
-        setContentIndex(
-          (prevIndex) => (prevIndex - 1 + contents.length) % contents.length
-        );
-      }
-    } else if (mouseEvent && offset < -threshold) {
-      if (card === "CardContactsA") {
-        setContentIndex((prevIndex) => (prevIndex + 1) % contents.length);
-      }
-    }
-  };
+  
 
   const [typingText, setTypingText] = useState("");
   const words = ["TailwindCSS", "React", "Styled-Components"];
@@ -115,11 +113,6 @@ export function HeroSection() {
     await loadSlim(engine);
   }, []);
 
-  const xB = useMotionValue(0);
-  const rotateB = useTransform(xB, [-100, 0, 100], [-10, 0, 10]);
-
-  const xC = useMotionValue(0);
-  const rotateC = useTransform(xC, [-100, 0, 100], [-5, 0, 5]);
 
   const [repos, setRepos] = useState<Repo[]>([]);
   const [showAllRepos, setShowAllRepos] = useState(false);
@@ -139,7 +132,9 @@ export function HeroSection() {
 
   async function fetchReadmeImages(owner: string, repo: string) {
     try {
-      const readmeResponse = await fetch( `https://api.github.com/repos/${owner}/${repo}/readme` );
+      const readmeResponse = await fetch(
+        `https://api.github.com/repos/${owner}/${repo}/readme`
+      );
       if (!readmeResponse.ok) {
         throw new Error("Failed to fetch README.md");
       }
@@ -160,14 +155,13 @@ export function HeroSection() {
       return [];
     }
   }
-  const x = useMotionValue(0);
-
-  const rotate = useTransform(x, [-100, 0, 100], [-30, 0, 30]);
 
   useEffect(() => {
     async function getUserInfo() {
       try {
-        const response = await fetch( "https://api.github.com/users/pablokaliel/repos" );
+        const response = await fetch(
+          "https://api.github.com/users/pablokaliel/repos"
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch repositories");
         }
@@ -376,36 +370,47 @@ export function HeroSection() {
 
           <FormContact>
             <CardContact>
-              <CardContactsA
-                className="card"
-                style={{ x, rotate }}
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                onDragEnd={(event, info) =>
-                  handleDragEnd(event, info, "CardContactsA")
-                }
-                transition={{ type: "spring", stiffness: 200, damping: 800 }}
+              <Swiper
+                effect={"cards"}
+                grabCursor={true}
+                modules={[EffectCards]}
+                className="mySwiper"
               >
-                {contents[contentIndex % contents.length]}
-              </CardContactsA>
-
-              <CardContactsB
-                style={{ x: xB, rotate: rotateB }}
-                animate={{
-                  rotateZ: -2,
-                }}
-              >
-                {contents[(contentIndex + 1) % contents.length]}
-              </CardContactsB>
-
-              <CardContactsC
-                style={{ x: xC, rotate: rotateC }}
-                animate={{
-                  rotateZ: -4,
-                }}
-              >
-                {contents[(contentIndex + 2) % contents.length]}
-              </CardContactsC>
+                <SwiperSlide>
+                  <CardContactsA><div style={{ width: "100%" }}>
+                    <GithubLogo size={24} />
+                    <CardInfos>
+                      <h4>GitHub</h4>
+                      <h5>PabloKaliel</h5>
+                      <a href="#">Conheça meus projetos</a>
+                    </CardInfos>
+                  </div>
+                    </CardContactsA>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <CardContactsA><div style={{ width: "100%" }}>
+                    <EnvelopeSimple size={24} />
+                    <CardInfos>
+                      <h4>Email</h4>
+                      <h5>pablo.kalyell.441@gmail.com</h5>
+                      <a href="#">Fale Comigo</a>
+                    </CardInfos>
+                  </div>
+                    </CardContactsA>
+                </SwiperSlide>
+                <SwiperSlide>
+                  {" "}
+                  <CardContactsA><div style={{ width: "100%" }}>
+                    <DiscordLogo size={24} />
+                    <CardInfos>
+                      <h4>Discord</h4>
+                      <h5>ShaZzaN</h5>
+                      <a href="#">vamos conversar!</a>
+                    </CardInfos>
+                  </div>
+                    </CardContactsA>
+                </SwiperSlide>
+              </Swiper>
             </CardContact>
           </FormContact>
         </ContentContact>
