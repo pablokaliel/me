@@ -208,14 +208,13 @@ export const Infos = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  
 `;
 
 export const Typing = styled.div`
   margin-top: 0.5rem;
   height: 19px;
   position: relative;
-  color:#d8b8eb;
+  color: #d8b8eb;
 
   @keyframes blinckCursor {
     from {
@@ -647,7 +646,6 @@ export const ContactInfo = styled.form`
   div {
     width: 100%;
     input {
-      background: transparent;
       border: 2px solid rgba(136, 146, 176, 0.337);
       border-radius: 0.5rem;
       color: #fff;
@@ -658,6 +656,8 @@ export const ContactInfo = styled.form`
       &:focus {
         border: 2px solid rgba(155, 79, 218, 0.689);
       }
+
+      background: rgba(0, 0, 0, 0.35);
     }
 
     textarea {
@@ -665,7 +665,9 @@ export const ContactInfo = styled.form`
       &:focus {
         border: 2px solid rgba(155, 79, 218, 0.689);
       }
-      background: transparent;
+
+      background: rgba(0, 0, 0, 0.35);
+
       border: 2px solid rgba(136, 146, 176, 0.337);
       border-radius: 0.5rem;
       color: #fff;
