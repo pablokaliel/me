@@ -40,12 +40,18 @@ export function Navbar() {
     <S.Container data-scroll-active={isScroll}>
       <div>
         <S.Logo data-scroll-active={isScroll}>
-          <a href="#home">
+        <Link
+            to="home"
+            spy={true}
+            smooth={true}
+            duration={600}
+            style={{ color: activeSection === "home" ? "#7440aa" : "#fff", cursor: "pointer", }}
+          >
             <Code
               style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out" }}
               size={isScroll ? 40 : 60}
             />
-          </a>
+          </Link>
         </S.Logo>
 
         <S.Nav data-scroll-active={isScroll}>
