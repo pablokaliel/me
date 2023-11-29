@@ -8,6 +8,7 @@ import { TiMessages } from "react-icons/ti";
 
 import useNavbarAnimation from "./useNavbarAnimation";
 import { useEffect, useState } from "react";
+import { Link } from "react-scroll";
 
 export function Navbar() {
   const { isScroll } = useNavbarAnimation();
@@ -41,62 +42,72 @@ export function Navbar() {
         <S.Logo data-scroll-active={isScroll}>
           <a href="#home">
             <Code
-              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out", }}
+              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out" }}
               size={isScroll ? 40 : 60}
             />
           </a>
         </S.Logo>
 
         <S.Nav data-scroll-active={isScroll}>
-          <a
-            href="#home"
-            style={{ color: activeSection === "home" ? "#7440aa" : "#fff" }}
+          <Link
+            to="home"
+            spy={true}
+            smooth={true}
+            duration={600}
+            style={{ color: activeSection === "home" ? "#7440aa" : "#fff", cursor: "pointer", }}
           >
             <IoHomeOutline
               style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out", }}
               size={isScroll ? 16 : 20}
             />
             Inicio
-          </a>
-          <div
-            style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }}
-          />
+          </Link>
+          <div style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }} />
 
-          <a
-            href="#about"
-            style={{ color: activeSection === "about" ? "#7440aa" : "#fff" }}
+          <Link
+            to="about"
+            spy={true}
+            smooth={true}
+            duration={600}
+            style={{ color: activeSection === "about" ? "#7440aa" : "#fff",  cursor: "pointer" }}
           >
             <FaRegUser
               style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out", }}
               size={isScroll ? 16 : 20}
             />
             sobre
-          </a>
-          <div
-            style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }}
-          />
+          </Link>
+          <div style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }} />
 
-          <a
-            href="#projects"
-            style={{ color: activeSection === "projects" ? "#7440aa" : "#fff" }}
+          <Link
+            to="projects"
+            spy={true}
+            smooth={true}
+            duration={600}
+            style={{ color: activeSection === "projects" ? "#7440aa" : "#fff", cursor: "pointer", }}
           >
             <VscFileSubmodule
-              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out", }}
+              style={{
+                transition: "width 0.36s ease-in-out, height 0.36s ease-in-out",
+              }}
               size={isScroll ? 16 : 20}
             />
             projetos
-          </a>
+          </Link>
           <div
             style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1, }}
           />
 
-          <a
-            href="#contact"
-            style={{ color: activeSection === "contact" ? "#7440aa" : "#fff" }}
+          <Link
+            to="contact"
+            spy={true}
+            smooth={true}
+            duration={600}
+            style={{ color: activeSection === "contact" ? "#7440aa" : "#fff", cursor: "pointer" }}
           >
             <TiMessages size={isScroll ? 16 : 20} />
             contato
-          </a>
+          </Link>
         </S.Nav>
       </div>
     </S.Container>
