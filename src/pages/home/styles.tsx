@@ -12,53 +12,45 @@ export const Container = styled.main`
   }
 
   & > div {
-    height: 100%;
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    height: 100%;
+    position: relative;
   }
-`;
-
-export const Title = styled.h1`
-  font-size: 8.2rem;
-  font-weight: normal;
-
-  & > span {
-    padding: 0 2rem;
-    background-color: #1c1c1c;
-  }
-`;
-
-export const Cursor = styled.h1`
-  height: 100%;
-  width: 1px;
-  background-color: #fff;
 `;
 
 export const ContentFooter = styled.div`
   height: 100%;
   width: 100%;
+
   margin-top: 9rem;
+
   background: rgba(0, 0, 0, 0.142);
   border-bottom: 1px solid #261137;
   backdrop-filter: blur(13.5px);
   -webkit-backdrop-filter: blur(13.5px);
+
   span {
     display: inline-block;
+
     font-size: 2rem;
     font-weight: 500;
     transition: all 0.2s ease;
     color: #c77dff;
   }
+
   small {
     color: #c77dff;
   }
+
   div {
-    margin: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    margin: 2.5rem;
     gap: 1rem;
   }
 `;
@@ -82,9 +74,10 @@ export const ContentProjects = styled.div`
 `;
 
 export const ContentContact = styled.div`
-  z-index: 999;
   height: 100%;
   width: 100%;
+
+  z-index: 999;
   padding-top: 9rem;
 `;
 
@@ -95,34 +88,40 @@ export const Content = styled.div`
 
 export const Profile = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   width: 100%;
   height: 100%;
-  align-items: center;
+
   padding-right: 110px;
   padding-left: 110px;
-  justify-content: space-between;
 `;
 
 export const Left = styled.div`
-  align-self: end;
-  position: relative;
-  align-items: center;
-  bottom: 0;
   display: flex;
   flex-direction: column;
+  align-self: end;
+  align-items: center;
+
+  position: relative;
+  bottom: 0;
+
   gap: 0.8rem;
 
   &::after {
+    height: 10rem;
+    width: 1px;
+
     content: "";
     background-color: #fff;
     bottom: 0;
-    height: 10rem;
-    width: 1px;
   }
 
   a {
     color: #fff;
     transition: all 0.3s ease-in;
+
     &:hover {
       color: #9d4edd;
       scale: 1.2;
@@ -133,25 +132,29 @@ export const Left = styled.div`
 export const Center = styled.div``;
 
 export const Right = styled.div`
-  align-self: end;
-  align-items: center;
-  bottom: 0;
   display: flex;
   flex-direction: column;
+  align-self: end;
+  align-items: center;
+
+  position: relative;
+  bottom: 0;
+
   gap: 0.8rem;
 
   &::after {
+    height: 10rem;
+    width: 1px;
+
     content: "";
     background-color: #fff;
     bottom: 0;
-    height: 10rem;
-    width: 1px;
   }
 
-  position: relative;
   a {
     color: #fff;
     transition: all 0.3s ease-in;
+
     &:hover {
       color: #9d4edd;
       scale: 1.2;
@@ -165,11 +168,14 @@ export const Me = styled.div`
 `;
 
 export const DivImage = styled.div`
-  text-align: center;
   display: flex;
   flex-direction: column;
-  grid-area: div1;
   align-items: center;
+
+  text-align: center;
+
+  grid-area: div1;
+
   h2 {
     font-size: 1.2rem;
   }
@@ -178,22 +184,27 @@ export const DivImage = styled.div`
 export const DivImg = styled.div`
   width: 192px;
   height: 194px;
+
   border: 2px solid #7b2cbf;
   border-radius: 5px;
+
   margin-bottom: 1.5rem;
 
   position: relative;
 
   &::after {
-    content: "";
-    background-image: url("https://github.com/pablokaliel.png");
-    background-size: cover;
-    border-radius: 5px;
-    position: absolute;
     width: 100%;
     height: 100%;
+    content: "";
+
+    background-image: url("https://github.com/pablokaliel.png");
+    background-size: cover;
+
+    border-radius: 5px;
     top: -15px;
     left: -15px;
+
+    position: absolute;
     transition: all 0.3s ease;
   }
 
@@ -211,8 +222,8 @@ export const Infos = styled.div`
 `;
 
 export const Typing = styled.div`
-  margin-top: 0.5rem;
   height: 19px;
+  margin-top: 0.5rem;
   position: relative;
   color: #d8b8eb;
 
@@ -226,30 +237,33 @@ export const Typing = styled.div`
   }
 
   &::after {
-    content: "";
-    background-color: #fff;
-    border-radius: 5px;
-    position: absolute;
     width: 1px;
     height: 100%;
+    content: "";
+
+    background-color: #fff;
+    border-radius: 5px;
+
+    position: absolute;
     animation: blinckCursor 600ms steps(40) infinite normal;
   }
 `;
 
 export const Button = styled.button`
-  border: 1px solid #7b2cbf;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  background-color: transparent;
-  color: #7b2cbf;
-  display: inline-block;
-  padding: 0.75rem 1.2rem;
-  transition: var(--transition);
   width: -moz-max-content;
   width: max-content;
 
-  transition: all 0.3s;
+  display: inline-block;
+  cursor: pointer;
+
+  border: 1px solid #7b2cbf;
+  border-radius: 0.4rem;
+  background-color: transparent;
   color: #e0aaff;
+
+  padding: 0.75rem 1.2rem;
+  transition: all 0.3s;
+
   &:hover {
     background-color: #c77dff;
     color: #fff;
@@ -257,23 +271,23 @@ export const Button = styled.button`
 `;
 
 export const ButtonContact = styled.button`
+  width: max-content;
+
+  display: inline-block;
+  cursor: pointer;
+
   border: 1px solid #7b2cbf;
   border-radius: 0.4rem;
-  cursor: pointer;
   background-color: #7b2cbf;
-  color: #20013a;
-  display: inline-block;
-  padding: 0.75rem 1.2rem;
-  transition: var(--transition);
-
-  transition: all 0.3s;
   color: #e0aaff;
+
+  padding: 0.75rem 1.2rem;
+  transition: all 0.3s;
+
   &:hover {
     background-color: #c77dff;
     color: #fff;
   }
-
-  width: max-content;
 `;
 
 export const Buttons = styled.div`
@@ -284,30 +298,31 @@ export const Buttons = styled.div`
 
 export const DivTitleAbout = styled.div`
   display: flex;
-  text-align: center;
-  grid-area: title;
   flex-direction: column;
+  grid-area: title;
+
+  text-align: center;
   margin-bottom: 5.6rem;
 
   h5 {
     color: #e0aaff;
   }
+
   h1 {
     color: #ffffff;
   }
 `;
 
 export const AboutMe = styled.div`
-  margin-left: 110px;
-  margin-right: 110px;
-  gap: 5%;
-
   display: grid;
   grid-template-columns: 1fr 1fr;
-
   grid-template-areas:
     "title title"
     "div1 div2";
+
+  margin-left: 110px;
+  margin-right: 110px;
+  gap: 5%;
 
   position: relative;
   padding-left: 10px;
@@ -318,28 +333,31 @@ export const AboutMe = styled.div`
   }
 
   &::before {
-    background-color: #e0aaff;
-    content: "";
+    width: 1px;
     height: 100%;
+    content: "";
+
+    background-color: #e0aaff;
     position: absolute;
     top: 0;
-    width: 1px;
   }
 `;
 
 export const CardTechnologies = styled.div`
   width: 100%;
   height: 100%;
-  border-radius: 8px;
-  background-color: #00000070;
+
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  border-radius: 8px;
+  background-color: #00000070;
+
   padding-left: 50px;
   padding-right: 50px;
   padding-bottom: 50px;
-  max-height: 70%;
 
   h4 {
     margin: 30px;
@@ -347,23 +365,27 @@ export const CardTechnologies = styled.div`
 `;
 
 export const Card = styled.div`
-  display: grid;
-  gap: 18px;
-  grid-template-columns: repeat(2, 1fr);
   width: 100%;
   height: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 18px;
 `;
 
 export const Technologies = styled.div`
-  border-radius: 8px;
   width: 100%;
   height: 100%;
-  font-size: 0.7rem;
   position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   border: 1px solid #8a11daaf;
+  border-radius: 8px;
+  font-size: 0.7rem;
   transition: all 0.3s ease;
 
   &:hover {
@@ -372,37 +394,43 @@ export const Technologies = styled.div`
   }
 
   a {
-    background-color: #10002b;
-    position: absolute;
-    border-radius: 8px;
-    border: 1px solid #4906769f;
     width: 100%;
     height: 100%;
-    list-style: none;
-    display: flex;
-    gap: 8px;
-    flex-direction: column;
-    justify-content: center;
-    color: #dbd8dc;
-    align-items: center;
+
+    position: absolute;
     top: -10px;
     left: -10px;
-    transition: all 0.3s ease;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #10002b;
+    color: #dbd8dc;
+    border-radius: 8px;
+    border: 1px solid #4906769f;
+    list-style: none;
+
+    gap: 8px;
     padding: 5px;
+    transition: all 0.3s ease;
 
     &:hover {
       top: -15px;
-      border: 1px solid #a600ff;
       left: -15px;
+
+      border: 1px solid #a600ff;
     }
   }
 `;
 
 export const PortifolioContainer = styled.div`
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(3, 1fr);
   width: 74%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 
   @media screen and (max-width: 1024px) {
     gap: 1.2rem;
@@ -417,15 +445,18 @@ export const PortifolioContainer = styled.div`
 `;
 
 export const Article = styled.a`
-  border: 1px solid #3f197d75;
+  position: relative;
+
   background-color: #0d0022c4;
-  text-decoration: none;
   color: #eeeeee;
   border-radius: 8px;
-  padding: 2rem 1.5rem;
-  position: relative;
-  transition: all 0.3s;
+  border: 1px solid #3f197d75;
   box-shadow: 8px 8px 8px rgb(0 0 0 / 33%);
+
+  text-decoration: none;
+  padding: 2rem 1.5rem;
+
+  transition: all 0.3s;
 
   &:hover {
     border-color: #7b2cbf;
@@ -435,16 +466,18 @@ export const Article = styled.a`
 `;
 
 export const ArticleImage = styled.div`
-  align-items: center;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+
   position: relative;
   margin-bottom: 1rem;
 
   div {
     display: flex;
-    gap: 2px;
     align-items: end;
+
+    gap: 2px;
 
     div {
       display: flex;
@@ -461,6 +494,7 @@ export const ArticleImage = styled.div`
   a {
     color: #7b2cbf;
     transition: all 0.3s;
+
     &:hover {
       color: #fff;
       scale: 1.1;
@@ -470,6 +504,7 @@ export const ArticleImage = styled.div`
 
 export const ArticleText = styled.div`
   margin-top: 0.7rem;
+
   div {
     display: flex;
     align-items: center;
@@ -480,6 +515,7 @@ export const ArticleText = styled.div`
       margin-bottom: 1rem;
     }
   }
+
   h3 {
     margin-top: 0.5rem;
   }
@@ -496,15 +532,18 @@ export const ArticleText = styled.div`
   }
 
   small {
-    bottom: 1.5rem;
-    color: #e0aaff;
-    font-size: 0.8rem;
-    left: 1.5rem;
-    position: absolute;
-    text-align: left;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
+
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+
+    color: #e0aaff;
+    font-size: 0.8rem;
+    text-align: left;
+
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -512,8 +551,9 @@ export const ArticleText = styled.div`
 
 export const FormContact = styled.div`
   display: grid;
-  gap: 15%;
   grid-template-columns: 30% 50%;
+
+  gap: 15%;
   padding-right: 110px;
   padding-left: 110px;
 
@@ -534,20 +574,22 @@ export const DivImageRepo = styled.div`
   img {
     width: 100%;
     height: 100%;
-    aspect-ratio: 16/9;
 
-    display: block;
     position: relative;
+
+    aspect-ratio: 16/9;
     z-index: 1;
   }
 
   &::after {
+    width: 100%;
+    height: 100%;
     content: "";
+
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+
     background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     z-index: 2;
     pointer-events: none;
@@ -555,12 +597,14 @@ export const DivImageRepo = styled.div`
 `;
 
 export const DivStar = styled.div`
-  position: absolute;
-  top: 3px;
-  right: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  position: absolute;
+  top: 3px;
+  right: 32px;
+
   gap: 4px;
 
   span {
@@ -571,30 +615,33 @@ export const DivStar = styled.div`
 export const Form = styled.div``;
 
 export const Contact = styled.div`
-  transform-style: preserve-3d;
-  transform: translateZ(0);
   display: flex;
   position: relative;
+
+  transform-style: preserve-3d;
+  transform: translateZ(0);
 `;
 
 export const CardContactsA = styled(motion.div)`
   width: 100%;
-  padding: 5rem 1rem;
+  height: 100%;
 
-  border-radius: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  padding: 5rem 1rem;
   text-align: center;
-  border: 1px solid #aa0bffba;
+
   background-color: #0d0022;
-  height: 100%;
+  border-radius: 1.2rem;
+  border: 1px solid #aa0bffba;
 `;
 
 export const CardContact = styled(motion.div)`
-  overflow: visible;
-  perspective: 1200px;
   max-width: 260px;
+  perspective: 1200px;
+  overflow: visible;
 
   h5 {
     color: #d7d4d4;
@@ -604,6 +651,7 @@ export const CardContact = styled(motion.div)`
     color: #e0aaff;
     text-decoration: none;
     transition: all 0.3s;
+
     &:hover {
       color: #ffffff;
     }
@@ -612,69 +660,87 @@ export const CardContact = styled(motion.div)`
 
 export const CardInfos = styled.div`
   margin-bottom: 0.6rem;
+
   h4 {
     font-size: 16px;
   }
+
   h5 {
     font-size: 13.58px;
   }
+
   a {
     font-size: 16px;
   }
 `;
+
 export const ContactInfo = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
   width: 100%;
 
-  button {
-    color: #e0aaff;
-    width: 150px;
-    border: none;
-    outline: none;
-    border-radius: 0.4rem;
-    cursor: pointer;
-    background-color: #7b2cbf;
+  display: flex;
+  flex-direction: column;
 
-    display: inline-block;
-    padding: 0.75rem 1.2rem;
+  gap: 1.2rem;
+
+  button {
     width: -moz-max-content;
     width: max-content;
+
+    display: inline-block;
+
+    background-color: #7b2cbf;
+    color: #e0aaff;
+    border-radius: 0.4rem;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    padding: 0.75rem 1.2rem;
+    transition: all 0.3s;
+
+    &:hover {
+    background-color: #c77dff;
+    color: #fff;
+  }
   }
 
   div {
     width: 100%;
+
     input {
+      width: 100%;
+      resize: none;
+
+      background: rgba(0, 0, 0, 0.35);
       border: 2px solid rgba(136, 146, 176, 0.337);
       border-radius: 0.5rem;
       color: #fff;
+
       padding: 1rem;
-      resize: none;
-      width: 100%;
       outline: none;
+
       &:focus {
         border: 2px solid rgba(155, 79, 218, 0.689);
       }
-
-      background: rgba(0, 0, 0, 0.35);
     }
 
     textarea {
-      outline: none;
-      &:focus {
-        border: 2px solid rgba(155, 79, 218, 0.689);
-      }
+      width: 100%;
+      height: 190px;
+      resize: none;
 
       background: rgba(0, 0, 0, 0.35);
-
       border: 2px solid rgba(136, 146, 176, 0.337);
       border-radius: 0.5rem;
       color: #fff;
+
       padding: 1rem;
-      resize: none;
-      width: 100%;
-      height: 190px;
+      outline: none;
+
+      &:focus {
+        border: 2px solid rgba(155, 79, 218, 0.689);
+      }
     }
   }
 `;

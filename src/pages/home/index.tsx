@@ -1,9 +1,11 @@
-import {Container,Content,Card,ContentProjects,Technologies,CardInfos,CardContactsA,ContentMe,DivStar,AboutMe,Profile,Left,Center,Right,ContentFooter,Me,DivImage,DivImg,Infos,Typing,Buttons,Button,ButtonContact,DivTitleAbout,CardTechnologies,PortifolioContainer,Article,ArticleText,DivImageRepo,ContentContact,FormContact,CardContact,ContactInfo } from "./styles";
+import * as S from "./styles";
 
 import { FaReact } from "react-icons/fa";
-import { SiTailwindcss, SiStyledcomponents } from "react-icons/si";
+import { SiStyledcomponents } from "react-icons/si";
 import { IoLogoFirebase } from "react-icons/io5";
-import { DiscordLogo, EnvelopeSimple, GithubLogo, InstagramLogo, LinkedinLogo, Star} from "@phosphor-icons/react";
+import { SiTypescript } from "react-icons/si";
+
+import { DiscordLogo, EnvelopeSimple, GithubLogo, InstagramLogo, LinkedinLogo, Star } from "@phosphor-icons/react";
 
 import type { Engine } from "tsparticles-engine";
 import Particles from "react-particles";
@@ -14,9 +16,9 @@ import { useCallback, useEffect, useState } from "react";
 import { optionsParticles } from "../../components/optionsParticles";
 import { Navbar } from "../../components/header";
 
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-cards";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper/modules";
 
 interface Repo {
@@ -57,13 +59,14 @@ export function HeroSection() {
       }
     };
     const typeTimer = setTimeout(type, isDeleting ? 50 : 200);
-
     return () => clearTimeout(typeTimer);
   }, [typingText, isDeleting, wordIndex, words, delay]);
 
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
+
+  const particlesLoaded = useCallback(async () => {}, []);
 
   const [repos, setRepos] = useState<Repo[]>([]);
   const [showAllRepos, setShowAllRepos] = useState(false);
@@ -84,14 +87,18 @@ export function HeroSection() {
   async function fetchReadmeImages(owner: string, repo: string) {
     try {
       const readmeResponse = await fetch( `https://api.github.com/repos/${owner}/${repo}/readme` );
-      if (!readmeResponse.ok) { throw new Error("Failed to fetch README.md"); }
+      if (!readmeResponse.ok) {
+        throw new Error("Failed to fetch README.md");
+      }
       const readmeData = await readmeResponse.json();
       const readmeContent = atob(readmeData.content);
       const imageRegex = /<img.*?src=["']([^"']+)["']/g;
       const imageUrls: string[] = [];
       let match;
 
-      while ((match = imageRegex.exec(readmeContent)) !== null) { imageUrls.push(match[1]); }
+      while ((match = imageRegex.exec(readmeContent)) !== null) {
+        imageUrls.push(match[1]);
+      }
       console.log("URLs das imagens encontradas:", imageUrls);
 
       return imageUrls;
@@ -138,14 +145,12 @@ export function HeroSection() {
     return `${day < 10 ? "0" + day : day}/${ month < 10 ? "0" + month : month }/${year}`;
   }
 
-  const particlesLoaded = useCallback(async () => {}, []);
-
   return (
-    <Container>
+    <S.Container>
       <Navbar />
-      <Content id="home">
-        <Profile>
-          <Left>
+      <S.Content id="home">
+        <S.Profile>
+          <S.Left>
             <a href="#">
               <GithubLogo size={18} />
             </a>
@@ -155,84 +160,72 @@ export function HeroSection() {
             <a href="#">
               <InstagramLogo size={18} />
             </a>
-          </Left>
+          </S.Left>
 
-          <Center>
-            <DivImage>
-              <DivImg></DivImg>
-              <Infos>
+          <S.Center>
+            <S.DivImage>
+              <S.DivImg/>
+              <S.Infos>
                 <h2>Olá, eu sou</h2>
                 <h3>Pablo Kaliel</h3>
-                <Typing>{typingText} </Typing>
-              </Infos>
-            </DivImage>
+                <S.Typing>{typingText} </S.Typing>
+              </S.Infos>
+            </S.DivImage>
 
-            <Buttons>
-              <Button>GitHub</Button>
-              <ButtonContact>Fale Comigo</ButtonContact>
-            </Buttons>
-          </Center>
+            <S.Buttons>
+              <S.Button>GitHub</S.Button>
+              <S.ButtonContact>Fale Comigo</S.ButtonContact>
+            </S.Buttons>
+          </S.Center>
 
-          <Right>
-            <a>
-              {" "}
-              <EnvelopeSimple />{" "}
-            </a>
-          </Right>
-        </Profile>
-      </Content>
+          <S.Right>
+            <a> <EnvelopeSimple />{" "} </a>
+          </S.Right>
+        </S.Profile>
+      </S.Content>
 
-      <ContentMe id="about">
-        <Me>
-          <DivTitleAbout>
+      <S.ContentMe id="about">
+        <S.Me>
+          <S.DivTitleAbout>
             <h5>Saiba mais </h5>
             <h1>Sobre Mim</h1>
-          </DivTitleAbout>
+          </S.DivTitleAbout>
 
-          <AboutMe>
+          <S.AboutMe>
             <p>
               👨‍💻 Olá, seja bem-vindo(a)!👋🏻
               <br />
-              Me chamo Pablo Kaliel, tenho 22 anos e sou apaixonado por Análise
-              e Desenvolvimento de Sistemas, formado pela Claretiano - Batatais.
+              Me chamo Pablo Kaliel, formado em Análise e Desenvolvimento de
+              Sistemas pela Claretiano - Batatais.
               <br />
-              Ao longo da minha jornada acadêmica, explorei diversas tecnologias
-              web, como HTML, CSS, JavaScript, e também mergulhei no universo
-              mobile, trabalhando com Ionic Framework e C#. Além disso, adquiri
-              conhecimento em Back-end, utilizando Firebase e MySql.
-              <br />
-              Embora minha experiência prática ainda esteja em desenvolvimento,
-              tenho me dedicado arduamente ao estudo contínuo, especialmente
-              focado em aprimorar minhas habilidades em ReactJS, HTML, CSS e
-              Tailwind para a criação de páginas e landing pages.
-              Complementarmente, explorei o uso de Firebase e localstorage para
-              implementar soluções de Back-end em algumas aplicações.
-              <p>
-                Você pode conferir meu <a href="#projects">portfólio</a> para
-                conhecer um pouco mais do meu trabalho.
-              </p>
+              Durante meus estudos, explorei tecnologias web como HTML, CSS,
+              JavaScript, além de trabalhar com Ionic Framework, C# e conhecer
+              Back-end com Firebase e MySql. Atualmente, estou focado em
+              aprimorar minhas habilidades em ReactJS, HTML, CSS e Tailwind para
+              criar páginas e landing pages. Meu <a href="#projects">portfólio</a>  mostra mais do meu
+              trabalho.
               <p style={{ marginTop: "1.6rem" }}>
                 Veja ao lado algumas tecnologias que tenho trabalhado
                 recentemente:
               </p>
             </p>
 
-            <CardTechnologies>
+            <S.CardTechnologies>
               <h4>Tecnologias</h4>
 
-              <Card>
-                <Technologies>
+              <S.Card>
+                <S.Technologies>
                   <a target="_blank" href="https://react.dev/">
                     <FaReact size={22} color="#e0aaff" /> <p>ReactJS</p>
                   </a>
-                </Technologies>
-                <Technologies>
+                </S.Technologies>
+                <S.Technologies>
                   <a target="_blank" href="https://firebase.google.com/?hl=pt">
                     <IoLogoFirebase size={22} color="#e0aaff" />
                     <p>FireBase</p>
                   </a>
-                </Technologies>
-                <Technologies>
+                </S.Technologies>
+                <S.Technologies>
                   <a
                     target="_blank"
                     href="https://developer.mozilla.org/pt-BR/docs/Web/CSS"
@@ -240,48 +233,48 @@ export function HeroSection() {
                     <SiStyledcomponents size={35} color="#e0aaff" />
                     <p>Styled-Components</p>
                   </a>
-                </Technologies>
-                <Technologies>
-                  <a target="_blank" href="https://tailwindcss.com/">
-                    <SiTailwindcss size={22} color="#e0aaff" />
-                    <p>TailwindCSS</p>
+                </S.Technologies>
+                <S.Technologies>
+                  <a target="_blank" href="https://www.typescriptlang.org">
+                    <SiTypescript size={22} color="#e0aaff" />
+                    <p>Typescript</p>
                   </a>
-                </Technologies>
-              </Card>
-            </CardTechnologies>
-          </AboutMe>
-        </Me>
-      </ContentMe>
+                </S.Technologies>
+              </S.Card>
+            </S.CardTechnologies>
+          </S.AboutMe>
+        </S.Me>
+      </S.ContentMe>
 
-      <ContentProjects id="projects">
-        <DivTitleAbout>
+      <S.ContentProjects id="projects">
+        <S.DivTitleAbout>
           <h5>Meus </h5>
           <h1>Projetos</h1>
-        </DivTitleAbout>
+        </S.DivTitleAbout>
 
-        <PortifolioContainer>
+        <S.PortifolioContainer>
           {reposToShow.length > 0 ? (
             reposToShow.map((repo, i) => (
-              <Article target="_blank" href={repo.html_url} key={i}>
+              <S.Article target="_blank" href={repo.html_url} key={i}>
                 {repo.stargazers_count > 0 && (
-                  <DivStar>
+                  <S.DivStar>
                     <span>{repo.stargazers_count} </span>
                     <Star size={14} weight="fill" color="#ecaf14" />
-                  </DivStar>
+                  </S.DivStar>
                 )}
-                <DivImageRepo>
+                <S.DivImageRepo>
                   {repo.images && repo.images.length > 0 && (
-                    <DivImageRepo>
+                    <S.DivImageRepo>
                       {repo.images.map((imageUrl: string, index: number) => (
                         <div key={index}>
                           <img src={imageUrl} alt={`Imagem ${index + 1}`} />
                         </div>
                       ))}
-                    </DivImageRepo>
+                    </S.DivImageRepo>
                   )}
-                </DivImageRepo>
+                </S.DivImageRepo>
 
-                <ArticleText>
+                <S.ArticleText>
                   <div>
                     <h3>{repo.name}</h3>
                     <span>{formatDate(repo.created_at)}</span>
@@ -290,27 +283,27 @@ export function HeroSection() {
                     <p>{repo.description}</p>
                   </div>
                   <small>{repo.topics.join(", ")}</small>
-                </ArticleText>
-              </Article>
+                </S.ArticleText>
+              </S.Article>
             ))
           ) : (
             <p>Carregando...</p>
           )}
-        </PortifolioContainer>
+        </S.PortifolioContainer>
 
         {repos.length > 6 && (
-          <Button style={{ marginTop: "1.6rem" }} onClick={toggleShowRepos}>
+          <S.Button style={{ marginTop: "1.6rem" }} onClick={toggleShowRepos}>
             {showAllRepos ? "Ver Menos" : "Ver Mais"}
-          </Button>
+          </S.Button>
         )}
-        <ContentContact id="contact">
-          <DivTitleAbout>
+        <S.ContentContact id="contact">
+          <S.DivTitleAbout>
             <h5>Entre em </h5>
             <h1>Contato</h1>
-          </DivTitleAbout>
+          </S.DivTitleAbout>
 
-          <FormContact>
-            <CardContact>
+          <S.FormContact>
+            <S.CardContact>
               <Swiper
                 effect={"cards"}
                 grabCursor={true}
@@ -318,71 +311,75 @@ export function HeroSection() {
                 className="mySwiper"
               >
                 <SwiperSlide>
-                  <CardContactsA>
+                  <S.CardContactsA>
                     <div style={{ width: "100%" }}>
                       <GithubLogo size={24} />
-                      <CardInfos>
+                      <S.CardInfos>
                         <h4>GitHub</h4>
                         <h5>PabloKaliel</h5>
                         <a href="#">Conheça meus projetos</a>
-                      </CardInfos>
+                      </S.CardInfos>
                     </div>
-                  </CardContactsA>
+                  </S.CardContactsA>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <CardContactsA>
+                  <S.CardContactsA>
                     <div style={{ width: "100%" }}>
                       <EnvelopeSimple size={24} />
-                      <CardInfos>
+                      <S.CardInfos>
                         <h4>Email</h4>
                         <h5>pablo.kalyell.441@gmail.com</h5>
                         <a href="#">Fale Comigo</a>
-                      </CardInfos>
+                      </S.CardInfos>
                     </div>
-                  </CardContactsA>
+                  </S.CardContactsA>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <CardContactsA>
+                  <S.CardContactsA>
                     <div style={{ width: "100%" }}>
                       <DiscordLogo size={24} />
-                      <CardInfos>
+                      <S.CardInfos>
                         <h4>Discord</h4>
                         <h5>ShaZzaN</h5>
                         <a href="#">vamos conversar!</a>
-                      </CardInfos>
+                      </S.CardInfos>
                     </div>
-                  </CardContactsA>
+                  </S.CardContactsA>
                 </SwiperSlide>
               </Swiper>
-            </CardContact>
-            <ContactInfo>
+            </S.CardContact>
+            <S.ContactInfo>
               <div>
                 <input placeholder="Nome Completo" />
               </div>
 
               <div>
-                <input placeholder=" E-mail" />
+                <input placeholder="E-mail" />
               </div>
               <div>
-                <textarea placeholder=" Escreva sua mensagem..." />
+                <textarea placeholder="Escreva sua mensagem..." />
               </div>
               <button>Enviar</button>
-            </ContactInfo>
-          </FormContact>
-        </ContentContact>
-      <ContentFooter>
-         <div >
-          <span>Portfilio</span>
-         </div>
-         <div>
-          <p><GithubLogo size={24}/></p>
-          <p><LinkedinLogo size={24}/></p>
-         </div>
-         <div>
-          <small>© Pablo Kaliel. Todos direitos reservados.</small>
-         </div>
-      </ContentFooter>
-      </ContentProjects>
+            </S.ContactInfo>
+          </S.FormContact>
+        </S.ContentContact>
+        <S.ContentFooter>
+          <div>
+            <span>Portfilio</span>
+          </div>
+          <div>
+            <p>
+              <GithubLogo size={24} />
+            </p>
+            <p>
+              <LinkedinLogo size={24} />
+            </p>
+          </div>
+          <div>
+            <small>© Pablo Kaliel. Todos direitos reservados.</small>
+          </div>
+        </S.ContentFooter>
+      </S.ContentProjects>
 
       <Particles
         id="tsparticles"
@@ -390,6 +387,6 @@ export function HeroSection() {
         loaded={particlesLoaded}
         options={optionsParticles}
       />
-    </Container>
+    </S.Container>
   );
 }
