@@ -1,11 +1,13 @@
-import { Code } from "@phosphor-icons/react";
 import * as S from "./styles";
-import useNavbarAnimation from "./useNavbarAnimation";
-import { useEffect, useState } from "react";
+
+import { Code } from "@phosphor-icons/react";
 import { FaRegUser } from "react-icons/fa";
 import { IoHomeOutline } from "react-icons/io5";
 import { VscFileSubmodule } from "react-icons/vsc";
 import { TiMessages } from "react-icons/ti";
+
+import useNavbarAnimation from "./useNavbarAnimation";
+import { useEffect, useState } from "react";
 
 export function Navbar() {
   const { isScroll } = useNavbarAnimation();
@@ -51,7 +53,7 @@ export function Navbar() {
             style={{ color: activeSection === "home" ? "#7440aa" : "#fff" }}
           >
             <IoHomeOutline
-              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out" }}
+              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out", }}
               size={isScroll ? 16 : 20}
             />
             Inicio
@@ -65,9 +67,9 @@ export function Navbar() {
             style={{ color: activeSection === "about" ? "#7440aa" : "#fff" }}
           >
             <FaRegUser
-              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out" }}
+              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out", }}
               size={isScroll ? 16 : 20}
-            />{" "}
+            />
             sobre
           </a>
           <div
@@ -79,22 +81,20 @@ export function Navbar() {
             style={{ color: activeSection === "projects" ? "#7440aa" : "#fff" }}
           >
             <VscFileSubmodule
-              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out" }}
+              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out", }}
               size={isScroll ? 16 : 20}
             />
             projetos
           </a>
           <div
-            style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }}
+            style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1, }}
           />
 
-          <a href="#contact"
+          <a
+            href="#contact"
             style={{ color: activeSection === "contact" ? "#7440aa" : "#fff" }}
           >
-            <TiMessages
-             
-              size={isScroll ? 16 : 20}
-            />
+            <TiMessages size={isScroll ? 16 : 20} />
             contato
           </a>
         </S.Nav>

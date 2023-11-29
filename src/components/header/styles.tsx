@@ -50,7 +50,7 @@ export const Logo = styled.div`
     transition: all 0.3s;
 
     &:hover {
-      color: #E0AAFF;
+      color: #e0aaff;
     }
   }
 
@@ -79,7 +79,7 @@ export const Nav = styled.nav`
     gap: 4px;
 
     &:hover:not([style*="color: #E0AAFF"]) {
-      color: #E0AAFF !important;
+      color: #e0aaff !important;
     }
   }
 
