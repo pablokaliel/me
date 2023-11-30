@@ -7,7 +7,6 @@ import { loadSlim } from "tsparticles-slim";
 import { useCallback } from "react";
 
 import { optionsParticles } from "../../components/optionsParticles";
-import { Navbar } from "../../components/header";
 
 import SwapperProfile from "../../components/profile";
 import SwapperMe from "../../components/me";
@@ -22,7 +21,6 @@ export function HeroSection() {
 
   return (
     <S.Container>
-      <Navbar />
       <S.Content id="home">
         <SwapperProfile />
       </S.Content>
