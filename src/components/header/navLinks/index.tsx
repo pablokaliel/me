@@ -10,10 +10,12 @@ interface NavLinkProps {
   icon: IconType;
   activeSection: string;
   isScroll: boolean;
+  isLast?: boolean;
 }
 
-function NavLink({ to, spy, smooth, duration, title, icon: Icon, activeSection, isScroll }: NavLinkProps) {
+function NavLink({ to, spy, smooth, duration, title, icon: Icon, activeSection, isScroll,isLast }: NavLinkProps) {
   return (
+    <>
     <Link
       to={to}
       spy={spy || true}
@@ -30,6 +32,11 @@ function NavLink({ to, spy, smooth, duration, title, icon: Icon, activeSection, 
       />
       {title}
     </Link>
+    {!isLast && (
+      <div style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }} />
+    )}
+  </>
+    
   );
 }
 

@@ -10,10 +10,7 @@ import useNavbarAnimation from "./useNavbarAnimation";
 import { useEffect, useState } from "react";
 import { Link } from "react-scroll";
 
-
-
 import NavLink from "./navLinks";
-
 
 export function Navbar() {
   const { isScroll } = useNavbarAnimation();
@@ -55,14 +52,13 @@ export function Navbar() {
         </S.Logo>
 
         <S.Nav data-scroll-active={isScroll}>
-        <NavLink
+          <NavLink
             to="home"
             title="Inicio"
             icon={IoHomeOutline}
             activeSection={activeSection}
             isScroll={isScroll}
           />
-          <div style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }} />
 
           <NavLink
             to="about"
@@ -71,7 +67,6 @@ export function Navbar() {
             activeSection={activeSection}
             isScroll={isScroll}
           />
-          <div style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }} />
 
           <NavLink
             to="projects"
@@ -80,7 +75,6 @@ export function Navbar() {
             activeSection={activeSection}
             isScroll={isScroll}
           />
-          <div style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }} />
 
           <NavLink
             to="contact"
@@ -88,8 +82,8 @@ export function Navbar() {
             icon={TiMessages}
             activeSection={activeSection}
             isScroll={isScroll}
+            isLast
           />
-      
         </S.Nav>
       </div>
     </S.Container>
