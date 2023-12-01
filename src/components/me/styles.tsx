@@ -14,7 +14,7 @@ export const DivTitleAbout = styled.div`
   margin-bottom: 5.6rem;
 
   h5 {
-    color: ${(props) => props.theme.colors.link};
+    color: #e0aaff;
   }
 
   h1 {
