@@ -12,6 +12,7 @@ import { Link } from "react-scroll";
 
 import Switch from "react-switch";
 import { ThemeContext } from "styled-components";
+import NavLink from "./navLinks";
 
 interface Props {
   toggleTheme: () => void;
@@ -58,61 +59,40 @@ export function Navbar({ toggleTheme }: Props) {
         </S.Logo>
 
         <S.Nav data-scroll-active={isScroll}>
-          <Link
+        <NavLink
             to="home"
-            spy={true}
-            smooth={true}
-            duration={600}
-            style={{ color: activeSection === "home" ? "#7440aa" : "#fff", cursor: "pointer" }}
-          >
-            <IoHomeOutline
-              style={{transition: "width 0.36s ease-in-out, height 0.36s ease-in-out" }}
-              size={isScroll ? 16 : 20}
-            />
-            Inicio
-          </Link>
+            title="Inicio"
+            icon={IoHomeOutline}
+            activeSection={activeSection}
+            isScroll={isScroll}
+          />
           <div style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }} />
 
-          <Link
+          <NavLink
             to="about"
-            spy={true}
-            smooth={true}
-            duration={600}
-            style={{ color: activeSection === "about" ? "#7440aa" : "#fff", cursor: "pointer" }}
-          >
-            <FaRegUser
-              style={{ transition: "width 0.36s ease-in-out, height 0.36s ease-in-out" }}
-              size={isScroll ? 16 : 20}
-            />
-            sobre
-          </Link>
+            title="Sobre"
+            icon={FaRegUser}
+            activeSection={activeSection}
+            isScroll={isScroll}
+          />
           <div style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }} />
 
-          <Link
+          <NavLink
             to="projects"
-            spy={true}
-            smooth={true}
-            duration={600}
-            style={{ color: activeSection === "projects" ? "#7440aa" : "#fff", cursor: "pointer" }}
-          >
-            <VscFileSubmodule
-              style={{transition: "width 0.36s ease-in-out, height 0.36s ease-in-out" }}
-              size={isScroll ? 16 : 20}
-            />
-            projetos
-          </Link>
+            title="Projetos"
+            icon={VscFileSubmodule}
+            activeSection={activeSection}
+            isScroll={isScroll}
+          />
           <div style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }} />
 
-          <Link
+          <NavLink
             to="contact"
-            spy={true}
-            smooth={true}
-            duration={600}
-            style={{ color: activeSection === "contact" ? "#7440aa" : "#fff", cursor: "pointer" }}
-          >
-            <TiMessages size={isScroll ? 16 : 20} />
-            contato
-          </Link>
+            title="Contato"
+            icon={TiMessages}
+            activeSection={activeSection}
+            isScroll={isScroll}
+          />
           <Switch
             onChange={toggleTheme}
             checked={title === "dark"}

@@ -13,12 +13,10 @@ function App() {
   };
   return (
     <ThemeProvider theme={theme}>
-
-    <>
-  <Navbar toggleTheme={toggleTheme}/>
-      <HeroSection />
-
-    </>
+      <>
+        <Navbar toggleTheme={toggleTheme} />
+        <HeroSection />
+      </>
     </ThemeProvider>
   );
 }
