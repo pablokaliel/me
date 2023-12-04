@@ -18,7 +18,7 @@ interface Repo {
   images: string[];
 }
 
-function SwapperRepos({ reposToShow,formatDate }: SwapperReposProps) {
+function SwapperRepos({ reposToShow, formatDate }: SwapperReposProps) {
   return (
     <S.PortifolioContainer>
       {reposToShow.length > 0 ? (

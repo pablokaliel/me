@@ -105,18 +105,20 @@ function SwapperProjects() {
         showAllRepos={showAllRepos}
         formatDate={formatDate}
       />
-      <S.Button style={{ marginTop: "1.6rem" }} onClick={() => {
-  toggleShowRepos();
-  if (showAllRepos) {
-    const projectsSection = document.getElementById('projects');
-    if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-}}>
-  {showAllRepos ? "Ver Menos" : "Ver Mais"}
-</S.Button>
-
+      <S.Button
+        style={{ marginTop: "1.6rem" }}
+        onClick={() => {
+          toggleShowRepos();
+          if (showAllRepos) {
+            const projectsSection = document.getElementById("projects");
+            if (projectsSection) {
+              projectsSection.scrollIntoView({ behavior: "smooth" });
+            }
+          }
+        }}
+      >
+        {showAllRepos ? "Ver Menos" : "Ver Mais"}
+      </S.Button>
 
       <S.ContentContact id="contact">
         <S.DivTitleAbout>

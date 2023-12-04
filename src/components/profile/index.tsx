@@ -32,6 +32,7 @@ function SwapperProfile() {
     const typeTimer = setTimeout(type, isDeleting ? 50 : 200);
     return () => clearTimeout(typeTimer);
   }, [typingText, isDeleting, wordIndex, words, delay]);
+
   return (
     <S.Profile>
       <S.Left>

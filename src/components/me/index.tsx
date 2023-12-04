@@ -1,9 +1,5 @@
+import SwapperCards from "./cards";
 import * as S from "./styles";
-
-import { FaReact } from "react-icons/fa";
-import { SiStyledcomponents } from "react-icons/si";
-import { IoLogoFirebase } from "react-icons/io5";
-import { SiTypescript } from "react-icons/si";
 
 function SwapperMe() {
   return (
@@ -34,38 +30,7 @@ function SwapperMe() {
         <S.CardTechnologies>
           <h4>Tecnologias</h4>
 
-          <S.Card>
-            <S.Technologies>
-              <a target="_blank" href="https://react.dev/">
-                <FaReact size={22} color="#e0aaff" />
-                <p>ReactJS</p>
-              </a>
-            </S.Technologies>
-
-            <S.Technologies>
-              <a target="_blank" href="https://firebase.google.com/?hl=pt">
-                <IoLogoFirebase size={22} color="#e0aaff" />
-                <p>FireBase</p>
-              </a>
-            </S.Technologies>
-
-            <S.Technologies>
-              <a
-                target="_blank"
-                href="https://developer.mozilla.org/pt-BR/docs/Web/CSS"
-              >
-                <SiStyledcomponents size={35} color="#e0aaff" />
-                <p>Styled-Components</p>
-              </a>
-            </S.Technologies>
-
-            <S.Technologies>
-              <a target="_blank" href="https://www.typescriptlang.org">
-                <SiTypescript size={22} color="#e0aaff" />
-                <p>Typescript</p>
-              </a>
-            </S.Technologies>
-          </S.Card>
+       <SwapperCards/>
         </S.CardTechnologies>
       </S.AboutMe>
     </S.Me>
