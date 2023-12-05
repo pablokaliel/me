@@ -1,6 +1,6 @@
-export default {
+// light.tsx
+const lightTheme = {
   title: "light",
-
   colors: {
     link: "#010101",
     icon: "#010101",
@@ -10,3 +10,5 @@ export default {
     header: "linear-gradient(to top, #6490DB, #B1C8EE)",
   },
 };
+
+export default lightTheme;

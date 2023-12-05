@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Me = styled.div`
   z-index: 9999;
   padding-top: 1rem;
+  background-color:${(props) => props.theme.colors.title};
 `;
 
 export const DivTitleAbout = styled.div`
@@ -18,7 +19,7 @@ export const DivTitleAbout = styled.div`
   }
 
   h1 {
-    color: #ffffff;
+    color:  ${(props) => props.theme.colors.title};
   }
 `;
 

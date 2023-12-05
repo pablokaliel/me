@@ -1,21 +1,26 @@
+// persisted.tsx
 import { useState, useEffect } from "react";
 
-function usePersistedState(key: string, inicialState: string) {
-  const [state, setState] = useState(() => {
-    const storageValue = localStorage.getItem(key);
-
-    if (storageValue) {
-      return JSON.parse(storageValue);
-    } else {
-      return inicialState;
+function usePersistedState<T>(key: string, initialState: T) {
+  const [state, setState] = useState<T>(() => {
+    try {
+      const storageValue = localStorage.getItem(key);
+      return storageValue ? JSON.parse(storageValue) : initialState;
+    } catch (error) {
+      console.error("Error retrieving state from localStorage:", error);
+      return initialState;
     }
   });
 
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(state));
+    try {
+      localStorage.setItem(key, JSON.stringify(state));
+    } catch (error) {
+      console.error("Error setting state in localStorage:", error);
+    }
   }, [key, state]);
 
-  return [state, setState];
+  return [state, setState] as const;
 }
 
 export default usePersistedState;

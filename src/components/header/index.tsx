@@ -7,12 +7,19 @@ import { VscFileSubmodule } from "react-icons/vsc";
 import { TiMessages } from "react-icons/ti";
 
 import useNavbarAnimation from "./useNavbarAnimation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-scroll";
 
+import Switch from "react-switch";
+import { ThemeContext } from "styled-components";
 import NavLink from "./navLinks";
 
-export function Navbar() {
+interface Props {
+  toggleTheme: () => void;
+}
+
+export function Navbar({ toggleTheme }: Props) {
+  const { title } = useContext(ThemeContext) || {};
   const { isScroll } = useNavbarAnimation();
   const [activeSection, setActiveSection] = useState("");
 
@@ -52,13 +59,14 @@ export function Navbar() {
         </S.Logo>
 
         <S.Nav data-scroll-active={isScroll}>
-          <NavLink
+        <NavLink
             to="home"
             title="Inicio"
             icon={IoHomeOutline}
             activeSection={activeSection}
             isScroll={isScroll}
           />
+          <div style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }} />
 
           <NavLink
             to="about"
@@ -67,6 +75,7 @@ export function Navbar() {
             activeSection={activeSection}
             isScroll={isScroll}
           />
+          <div style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }} />
 
           <NavLink
             to="projects"
@@ -75,6 +84,7 @@ export function Navbar() {
             activeSection={activeSection}
             isScroll={isScroll}
           />
+          <div style={{ width: 40, background: "#ffffff6a", borderRadius: 5, height: 1 }} />
 
           <NavLink
             to="contact"
@@ -82,7 +92,19 @@ export function Navbar() {
             icon={TiMessages}
             activeSection={activeSection}
             isScroll={isScroll}
-            isLast
+          />
+          <Switch
+            onChange={toggleTheme}
+            checked={title === "dark"}
+            height={10}
+            width={30}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            handleDiameter={20}
+            offColor="#6c757d"
+            onColor="#fff"
+            offHandleColor="#fff"
+            onHandleColor="#6c757d"
           />
         </S.Nav>
       </div>
