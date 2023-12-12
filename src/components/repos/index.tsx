@@ -18,6 +18,31 @@ interface Repo {
   images: string[];
 }
 
+function SkeletonLoading() {
+  return (
+    <S.SkeletonArticle>
+      <S.SkeletonDivStar>
+      
+      </S.SkeletonDivStar>
+      <S.SkeletonDivImageRepo>
+        <div>
+          <div></div>
+        </div>
+      </S.SkeletonDivImageRepo>
+      <S.SkeletonArticleText>
+        <div className="nameanddata">
+          <div className="name"></div>
+          <div className="data"></div>
+        </div>
+        <div className="infodata">
+          <div className="info"></div>
+        </div>
+        <div className="tags"></div>
+      </S.SkeletonArticleText>
+    </S.SkeletonArticle>
+  );
+}
+
 function SwapperRepos({ reposToShow, formatDate }: SwapperReposProps) {
   return (
     <S.PortifolioContainer>
@@ -32,14 +57,17 @@ function SwapperRepos({ reposToShow, formatDate }: SwapperReposProps) {
             )}
 
             <S.DivImageRepo>
-              {repo.images && repo.images.length > 0 && (
+              {repo.images && repo.images.length > 0 ? (
                 <S.DivImageRepo>
                   {repo.images.map((imageUrl: string, index: number) => (
                     <div key={index}>
-                      <img src={imageUrl} alt={`Imagem ${index + 1}`} />
+                      <img src={imageUrl} loading="lazy" alt={`Imagem ${index + 1}`} />
+                      
                     </div>
                   ))}
                 </S.DivImageRepo>
+              ) : (
+                <SkeletonLoading />
               )}
             </S.DivImageRepo>
 
@@ -56,7 +84,11 @@ function SwapperRepos({ reposToShow, formatDate }: SwapperReposProps) {
           </S.Article>
         ))
       ) : (
-        <p>Carregando...</p>
+        <>
+          <SkeletonLoading />
+          <SkeletonLoading />
+          <SkeletonLoading />
+        </>
       )}
     </S.PortifolioContainer>
   );
