@@ -1,4 +1,13 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const shimmer = keyframes`
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+`;
 
 export const PortifolioContainer = styled.div`
   width: 74%;
@@ -31,6 +40,17 @@ export const SkeletonArticle = styled.a`
 
   text-decoration: none;
   padding: 2rem 1.5rem;
+
+  /* animação do skeleton */
+  background-image: linear-gradient(
+    to right,
+    #0d0022c4 0%,
+    #3f197d75 20%,
+    #0d0022c4 40%,
+    #0d0022c4 100%
+  );
+  background-size: 1000px 100%;
+  animation: ${shimmer} 1.5s infinite linear;
 
   transition: all 0.3s;
 
