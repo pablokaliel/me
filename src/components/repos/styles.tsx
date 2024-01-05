@@ -29,71 +29,60 @@ export const PortifolioContainer = styled.div`
 `;
 
 export const SkeletonArticle = styled.a`
-  position: relative;
   width: 345px;
   height: 415px;
+  
+  position: relative;
+  padding: 2rem 1.5rem;
+
   background-color: #0d0022c4;
   color: #eeeeee;
+
   border-radius: 8px;
   border: 1px solid #3f197d75;
   box-shadow: 8px 8px 8px rgb(0 0 0 / 33%);
 
   text-decoration: none;
-  padding: 2rem 1.5rem;
-
   /* animação do skeleton */
-  background-image: linear-gradient(
-    to right,
-    #0d0022c4 0%,
-    #3f197d75 20%,
-    #0d0022c4 40%,
-    #0d0022c4 100%
-  );
+  background-image: linear-gradient( to right, #0d0022c4 0%, #3f197d75 20%, #0d0022c4 40%, #0d0022c4 100% );
   background-size: 1000px 100%;
-  animation: ${shimmer} 1.5s infinite linear;
+
+  animation: ${shimmer} 2s infinite linear;
 
   transition: all 0.3s;
-
-  &:hover {
-    border-color: #7b2cbf;
-    transform: translateY(-10px);
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
-  }
 `;
 
 export const SkeletonArticleText = styled.div`
+  height: 30%;
   margin-top: 0.7rem;
 
-  height: 30%;
-
   .tags {
+    height: 25px;
     border-radius: 5px;
     margin-top: 15px;
     background-color: #7a2cbf22;
-    height: 25px;
   }
 
   .infodata {
-    border-radius: 5px;
-    flex: 1;
-    margin-top: 15px;
-    background-color: #7a2cbf22;
     width: 100%;
     height: 100%;
+    background-color: #7a2cbf22;
+    flex: 1;
+    border-radius: 5px;
+    margin-top: 15px;
   }
 
   .nameanddata {
-    border-radius: 5px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-radius: 5px;
 
     .name {
-      border-radius: 5px;
-      background-color: #7a2cbf22;
       width: 35%;
       height: 25px;
+      border-radius: 5px;
+      background-color: #7a2cbf22;
     }
 
     .data {
@@ -102,38 +91,6 @@ export const SkeletonArticleText = styled.div`
       width: 30%;
       height: 25px;
     }
-  }
-
-  h3 {
-    margin-top: 0.5rem;
-  }
-
-  p {
-    font-size: 0.8rem;
-    margin-top: 0.5rem;
-  }
-
-  span {
-    font-size: 0.8rem;
-    margin-top: 0.5rem;
-    color: #9888a0;
-  }
-
-  small {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-
-    position: absolute;
-    bottom: 1.5rem;
-    left: 1.5rem;
-
-    color: #e0aaff;
-    font-size: 0.8rem;
-    text-align: left;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 `;
 
@@ -188,6 +145,7 @@ export const SkeletonDivStar = styled.div`
     font-size: 0.8rem;
   }
 `;
+
 export const Article = styled.a`
   position: relative;
 

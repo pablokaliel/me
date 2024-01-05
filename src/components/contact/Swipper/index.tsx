@@ -35,7 +35,7 @@ function ContentSwipper() {
           <EnvelopeSimple size={24} />
           <S.CardInfos>
             <h4>Email</h4>
-            <h5>pablo.kalyell.441@gmail.com</h5>
+            <h5>emailexample@gmail.com</h5>
             <a href="#">Fale Comigo</a>
           </S.CardInfos>
         </div>
